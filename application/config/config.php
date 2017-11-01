@@ -35,7 +35,7 @@ $config['base_url'] = 'http://localhost/Cimasur/';
 | variable so that it is blank.
 |
 */
-$config['index_page'] = 'welcome.php';
+$config['index_page'] = 'index.php';
 
 /*
 |--------------------------------------------------------------------------
