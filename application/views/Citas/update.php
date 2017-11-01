@@ -31,6 +31,13 @@
                     <h6 class="card-subtitle">Just add <code>form-material</code> class to the form that's it.</h6>
                     <form class="form-material m-t-40">
                         <div class="form-group">
+                            <label>Cliente</label>
+                            <select id="cliente">
+                                <? foreach ($Clientes as $d) { ?>      
+                                    <option value="<? $d->id ?>"><? echo $d->Nombres ?></option>      
+                                <? }?>
+                            </select> </div>
+                        <div class="form-group">
                             <label>Número de Cita</label>
                             <input class="form-control" type="number" value="42" id="noCita"> </div>
                         <div class="form-group">
@@ -39,6 +46,7 @@
                         <div class="form-group">
                             <label>Comentarios</label>
                             <textarea class="form-control" rows="5" id="comentarios"></textarea> </div>
+                        <button type="submit" class="btn btn-info">Submit</button>
                     </form>
                 </div>
             </div>

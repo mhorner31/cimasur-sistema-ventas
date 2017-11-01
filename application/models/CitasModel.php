@@ -6,10 +6,6 @@ class CitasModel extends CI_Model {
         $this->load->database();
     }
 
-    public function insertCita() {
-        
-    }
-
     public function getTipoInteresadoEnum()
     {
         $query = $this->db->get("TipoInteresado");
@@ -20,8 +16,8 @@ class CitasModel extends CI_Model {
     {
         if ($idVendedor != NULL)
         {
-            $query = $this->db->get_where('Cliente', array('id' => $idVendedor));
-            return $query->row_array();
+            $query = $this->db->get_where('Cliente', array('VendedorId' => $idVendedor));
+            return $query->result();
         }
         return NULL;
     }
@@ -30,5 +26,14 @@ class CitasModel extends CI_Model {
     {
         $query = $this->db->get("Inmueble");
         return $query->result(); 
+    }
+
+    public function getCitas()
+    {
+        $query = $this->db->query(
+            "SELECT cl.Nombres, cl.Apellidos, c.NoCita, c.Fecha, c.Comentarios 
+            FROM Cita c
+	        INNER JOIN Cliente cl ON c.IdCliente = cl.Id");
+        return $query->result();
     }
 }

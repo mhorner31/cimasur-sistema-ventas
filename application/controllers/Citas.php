@@ -14,15 +14,28 @@ class Citas extends CI_Controller {
         $this->load->helper('url');
         $this->load->helper('html');
 
+        $citasModel = new CitasModel;
+        $data['data'] = $citasModel->getCitas();
 
         $this->load->view('header_app');
         $this->load->view('topbar_app');
         $this->load->view('sidebar_app');
-        $this->load->view('citas');
+        $this->load->view('Citas/list', $data);
         $this->load->view('footer_app');
     }
 
-    public function insert_cita() {
-        
+    public function update($id = NULL) 
+    {
+        $this->load->helper('url');
+        $this->load->helper('html');
+
+        $citasModel = new CitasModel;
+        $data['Clientes'] = $citasModel->getClientesPorVendedor(1);
+
+        $this->load->view('header_app');
+        $this->load->view('topbar_app');
+        $this->load->view('sidebar_app');
+        $this->load->view('Citas/update', $data);
+        $this->load->view('footer_app');
     }
 }
