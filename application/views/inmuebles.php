@@ -23,41 +23,43 @@
                             <div class="form-group m-t-40 row">
                                 <label for="nombre" class="col-2 col-form-label">Nombre del Inmueble</label>
                                 <div class="col-10">
-                                    <input class="form-control" type="text" value="Departamento Planta Baja" id="nombre">
+                                    <input class="form-control" type="text" value="" id="nombre" required data-validation-required-message="Nombre de inmueble inválido.">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="tipo" class="col-2 col-form-label">Tipo de Inmueble</label>
+                               
                                 <div class="col-10">
                                         <select class="custom-select col-12" id="tipo">
-                                            <option selected=""><?php echo $tipoIn->Nombre?></option>
-                                            <option value="1">One</option>
-                                            <option value="2">Two</option>
-                                            <option value="3">Three</option>
+                                            <option selected="">Selecciona una opción</option>
+                                            <? foreach ($tipoInmueble as $d) { ?>      
+                                                 <option value="<? $d->id ?>"><? echo $d->Nombre ?></option>      
+                                             <? }?>
                                         </select>
                                 </div>
                             </div>
-                            <div class="form-group row">
+                            <div class="form-group row validate">
                                 <label for="precio" class="col-2 col-form-label">Precio del Inmueble</label>
                                 <div class="col-10">
-                                    <input class="form-control" type="number" value="1000000" id="precio">
+                                <div class="input-group">
+                                    <input type="number" min="0" value="0" name="onlyNum" class="form-control" required="" data-validation-required-message="Campo requerido. Verifica que está correcto el valor." aria-invalid="false"> </div>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="disponibilidad" class="col-2 col-form-label">Disponibilidad</label>
                                 <div class="col-10">
                                     <select class="custom-select col-12" id="disponibilidad">
-                                        <option selected="">Choose...</option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
+                                        <option selected="">Selecciona una opción</option>
+                                        <? foreach ($dispInmueble as $d) { ?>      
+                                            <option value="<? $d->id ?>"><? echo $d->Nombre ?></option>      
+                                        <? }?>
                                     </select>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="descripcion" class="col-2 col-form-label">Descripción</label>
                                 <div class="col-10">
-                                    <textarea class="form-control" value="Descripción" id="descripcion"></textarea>
+                                    <textarea class="form-control" value="" id="descripcion" required data-validation-required-message="Descripción de inmueble inválido."></textarea>
                                 </div>
                             </div>                    
                         </form>

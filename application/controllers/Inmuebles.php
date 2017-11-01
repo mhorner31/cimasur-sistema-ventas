@@ -19,7 +19,8 @@ class Inmuebles extends CI_Controller {
     {
 
         $inmuebles=new InmueblesModel;
-        $tipoInmuebles['data']=$inmuebles->getTipoInmueble();
+        $data['tipoInmueble']=$inmuebles->getTipoInmueble();
+        $data['dispInmueble']=$inmuebles->getDisponibilidadInmueble();
 
         $this->load->helper('url');
         $this->load->helper('html');
@@ -28,7 +29,7 @@ class Inmuebles extends CI_Controller {
         $this->load->view('header_app');
         $this->load->view('topbar_app');
         $this->load->view('sidebar_app');
-        $this->load->view('inmuebles', $tipoInmuebles);
+        $this->load->view('inmuebles', $data);
         $this->load->view('footer_app');
     }
 }

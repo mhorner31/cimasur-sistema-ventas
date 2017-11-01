@@ -47,6 +47,10 @@
     <!-- Style switcher -->
     <!-- ============================================================== -->
     <script src="<?php echo base_url();?>assets/plugins/styleswitcher/jQuery.style.switcher.js"></script>
+    <!-- ============================================================== -->
+    <!--Validation in forms -->
+    <!-- ============================================================== -->
+    <script src="<?php echo base_url();?>js/validation.js"></script>
 </body>
 
 </html>
