@@ -5,7 +5,7 @@ class Citas extends CI_Controller {
     public function __construct()
     {
             parent::__construct();
-            $this->load->model('citas_model');
+            $this->load->model('CitasModel');
             $this->load->helper('url_helper');
     }
      
