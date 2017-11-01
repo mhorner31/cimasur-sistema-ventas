@@ -9,8 +9,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">
-    <title>Admin Pro Admin Template - The Ultimate Bootstrap 4 Admin Template</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="../../assets/images/favicon.png">
+    <title>Cimasur</title>
     <!-- Bootstrap Core CSS -->
     <?php echo link_tag('assets/plugins/bootstrap/css/bootstrap.min.css'); ?>
     <?php echo link_tag('assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css'); ?>
@@ -20,7 +20,7 @@
     <?php echo link_tag('assets/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.css'); ?>
     <!--c3 CSS -->
     <?php echo link_tag('assets/plugins/chartist-js/dist/chartist.min.css'); ?>
-    <link href="../assets/plugins/c3-master/c3.min.css" rel="stylesheet">
+    <?php echo link_tag('assets/plugins/c3-master/c3.min.css');?>
     <!--Toaster Popup message CSS -->
     <?php echo link_tag('assets/plugins/toast-master/css/jquery.toast.css'); ?>
     <!-- Custom CSS -->
