@@ -14,6 +14,8 @@
     <!-- Bootstrap Core CSS -->
     <?php echo link_tag('assets/plugins/bootstrap/css/bootstrap.min.css'); ?>
     <?php echo link_tag('assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css'); ?>
+    <!-- Common pages CSS -->
+    <?php echo link_tag('css/pages/icon-page.css'); ?>
     <!-- This page CSS -->
     <!-- chartist CSS -->
     <?php echo link_tag('assets/plugins/chartist-js/dist/chartist.min.css'); ?>
