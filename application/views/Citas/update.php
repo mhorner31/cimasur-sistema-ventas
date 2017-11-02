@@ -33,8 +33,8 @@
                         <div class="form-group">
                             <label>Cliente</label>
                             <select id="cliente">
-                                <? foreach ($Clientes as $d) { ?>      
-                                    <option value="<? $d->id ?>"><? echo $d->Nombres ?></option>      
+                                <? foreach ($Clientes as $c) { ?>      
+                                    <option value="<? $c->Id ?>"><? echo $c->Nombres ?></option>      
                                 <? }?>
                             </select> </div>
                         <div class="form-group">

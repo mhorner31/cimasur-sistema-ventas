@@ -16,7 +16,7 @@ class CitasModel extends CI_Model {
     {
         if ($idVendedor != NULL)
         {
-            $query = $this->db->get_where('Cliente', array('VendedorId' => $idVendedor));
+            $query = $this->db->get_where("Cliente", array("VendedorId" => $idVendedor));
             return $query->result();
         }
         return NULL;
