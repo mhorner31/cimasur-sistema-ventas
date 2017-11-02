@@ -29,23 +29,23 @@
                 <div class="card-body">
                     <h4 class="card-title">Basic Material inputs</h4>
                     <h6 class="card-subtitle">Just add <code>form-material</code> class to the form that's it.</h6>
-                    <form class="form-material m-t-40">
+                    <form class="form-material m-t-40" method="post" action="<?php echo base_url('index.php/citas/insertar');?>">
                         <div class="form-group">
                             <label>Cliente</label>
-                            <select id="cliente">
+                            <select name="idCliente">
                                 <? foreach ($Clientes as $c) { ?>      
-                                    <option value="<? $c->Id ?>"><? echo $c->Nombres ?></option>      
+                                    <option value="<? echo $c->Id ?>"><? echo $c->Nombres ?></option>      
                                 <? }?>
                             </select> </div>
                         <div class="form-group">
                             <label>Número de Cita</label>
-                            <input class="form-control" type="number" value="42" id="noCita"> </div>
+                            <input class="form-control" type="number" value="42" name="noCita"> </div>
                         <div class="form-group">
                             <label>Fecha</label>
-                            <input class="form-control" type="datetime-local" value="2011-08-19T13:45:00" id="fecha"> </div>
+                            <input class="form-control" type="datetime-local" value="2011-08-19T13:45:00" name="fecha"> </div>
                         <div class="form-group">
                             <label>Comentarios</label>
-                            <textarea class="form-control" rows="5" id="comentarios"></textarea> </div>
+                            <textarea class="form-control" rows="5" name="comentarios"></textarea> </div>
                         <button type="submit" class="btn btn-info">Submit</button>
                     </form>
                 </div>

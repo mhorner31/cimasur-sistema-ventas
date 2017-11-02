@@ -38,4 +38,11 @@ class Citas extends CI_Controller {
         $this->load->view('Citas/update', $data);
         $this->load->view('footer_app');
     }
+
+    public function insertar() 
+    {
+        $citasModel = new CitasModel;
+        $citasModel->insertarCita();
+        redirect(base_url('citas/index'));
+    }
 }

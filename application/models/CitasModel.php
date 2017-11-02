@@ -36,4 +36,15 @@ class CitasModel extends CI_Model {
 	        INNER JOIN Cliente cl ON c.IdCliente = cl.Id");
         return $query->result();
     }
+
+    public function insertarCita()
+    {    
+        $data = array(
+            'idCliente' => $this->input->post('idCliente'),
+            'noCita' => $this->input->post('noCita'),
+            'fecha' => $this->input->post('fecha'),
+            'comentarios' => $this->input->post('comentarios')
+        );
+        return $this->db->insert('Cita', $data);
+    }
 }
