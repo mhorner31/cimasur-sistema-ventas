@@ -27,40 +27,33 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">Data Export</h4>
-                    <h6 class="card-subtitle">Export data to Copy, CSV, Excel, PDF & Print</h6>
+                    <h4 class="card-title">Citas</h4>
+                    <h6 class="card-subtitle">Exportar las citas a CSV, Excel, PDF o imprimirlas.</h6>
                     <div class="table-responsive m-t-40">
-                        <table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
+                        <table id="inmuebles" class="display nowrap table table-hover table-striped table-bordered" 
+                            cellspacing="0" width="100%">
                             <thead>
                                 <tr>
-                                    <th>Nombre</th>
-                                    <th>Apellidos</th>
-                                    <th>NoCita</th>
-                                    <th>Fecha</th>
+                                <th>Nombre</th>
+                                <th>Apellidos</th>
+                                <th>NoCita</th>
+                                <th>Fecha</th>
                                 </tr>
                             </thead>
-                            <tfoot>
+                            <tbody>                            
+                            <? foreach($data as $d) { ?>
                                 <tr>
-                                    <th>Nombre</th>
-                                    <th>Apellidos</th>
-                                    <th>NoCita</th>
-                                    <th>Fecha</th>
+                                    <th><?echo $d->Nombres?></th>
+                                    <th><?echo $d->Apellidos?></th>
+                                    <th><?echo $d->NoCita?></th>
+                                    <th><?echo $d->Fecha?></th>
                                 </tr>
-                            </tfoot>
-                            <tbody>
-                                <? foreach($data as $d) { ?>
-                                    <tr>
-                                        <th><?echo $d->Nombres?></th>
-                                        <th><?echo $d->Apellidos?></th>
-                                        <th><?echo $d->NoCita?></th>
-                                        <th><?echo $d->Fecha?></th>
-                                    </tr>
-                                <?}?>
-                            </tbody>
+                            <?}?>
+                            </tbody>                            
                         </table>
                     </div>
                 </div>
-            </div>
+            </div>         
         </div>
     </div>
     <!-- ============================================================== -->

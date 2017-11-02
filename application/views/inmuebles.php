@@ -15,7 +15,8 @@
                     <h4 class="card-title">Inmuebles</h4>
                     <h6 class="card-subtitle">Exportar los inmuebles a CSV, Excel, PDF o Imprmirlos</h6>
                     <div class="table-responsive m-t-40">
-                        <table id="inmuebles" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
+                        <table id="inmuebles" class="display nowrap table table-hover table-striped table-bordered" 
+                            cellspacing="0" width="100%">
                             <thead>
                                 <tr>
                                     <th>Nombre</th>
