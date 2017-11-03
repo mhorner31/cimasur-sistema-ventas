@@ -24,9 +24,9 @@
                     <a class="navbar-brand" href="index.html">
                         <!-- Logo text --><span>
                          <!-- dark Logo text -->
-                         <img src="../assets/images/cimasur_logo.png" alt="homepage" class="dark-logo" />
+                         <img src="<?php echo base_url();?>/assets/images/cimasur_logo.png" alt="homepage" class="dark-logo" />
                           <!-- Light Logo text -->    
-                          <img src="../assets/images/cimasur_logo.png" class="light-logo" alt="homepage" /></span> </a>
+                          <img src="<?php echo base_url();?>/assets/images/cimasur_logo.png" class="light-logo" alt="homepage" /></span> </a>
                 </div>
                 <!-- ============================================================== -->
                 <!-- End Logo -->
