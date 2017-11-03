@@ -64,9 +64,11 @@ class Login extends CI_Controller {
                     redirect('construccion');
                 //}
                 } else {
-                    $data['mensajeLogin'] = "Usuario o contraseña incorrectos";
-                    $this->load->view('login_app', $data);
+                
                 }
+            } else {
+                $data['mensajeLogin'] = "Usuario o contraseña incorrectos";
+                $this->load->view('login_app', $data);
             }
     }
 
