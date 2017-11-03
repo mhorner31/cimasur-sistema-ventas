@@ -77,8 +77,24 @@ class CitasModel extends CI_Model {
         $this->db->insert('InmuebleCliente', $inmuebleData);
     }
 
-    public function getSingleCita()
+    public function actualizarCita($id)
     {
+        // Actualizar la cita
+        $citaData = array(
+            'idCliente' => $this->input->post('idCliente'),
+            'noCita' => $this->input->post('noCita'),
+            'fecha' => $this->input->post('fecha'),
+            'comentarios' => $this->input->post('comentarios')
+        );
+        $this->db->where('id', $id);
+        $this->db->update('Cita', $citaData);
 
+        // Actualizar su inmueble
+        $inmuebleData = array(
+            'idInmueble' => $this->input->post('idInmueble'),
+            'tipoInteresadoId' => $this->input->post('tipoInteresadoId'),
+        );
+        $this->db->where('idCita', $id);
+        $this->db->update('InmuebleCliente', $inmuebleData);
     }
 }
