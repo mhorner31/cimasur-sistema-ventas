@@ -73,6 +73,15 @@
             ]
         });
     </script>
+    <script>
+        $('#citasList').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                'copy', 'csv', 'excel', 'pdf', 'print'
+            ]
+        });
+    </script>
+    
 </body>
 
 </html>

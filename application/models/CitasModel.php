@@ -22,29 +22,63 @@ class CitasModel extends CI_Model {
         return NULL;
     }
 
-    public function getInmuebles() 
-    {
-        $query = $this->db->get("Inmueble");
-        return $query->result(); 
+    public function getInmuebles(){
+        $query = $this->db->query(
+            "SELECT i.id, i.Nombre, i.Precio, d.Nombre as Disponibilidad, t.Nombre as Tipo
+             FROM Inmueble i
+             INNER JOIN DispInmueble d ON i.idDisponibilidad = d.id
+             INNER JOIN TipoInmueble t ON i.idTipo = t.id");
+        return $query->result();
     }
 
-    public function getCitas()
+    public function getCitas($id = NULL)
     {
-        $query = $this->db->query(
-            "SELECT cl.Nombres, cl.Apellidos, c.NoCita, c.Fecha, c.Comentarios 
-            FROM Cita c
-	        INNER JOIN Cliente cl ON c.IdCliente = cl.Id");
-        return $query->result();
+        $sql = "SELECT * FROM (
+                    SELECT c.id, cl.Nombres, cl.Apellidos, c.NoCita, c.Fecha, 
+                        c.Comentarios, im.nombre as inmueble
+                    FROM Cita c
+                    INNER JOIN Cliente cl ON c.IdCliente = cl.Id
+                    INNER JOIN InmuebleCliente ic ON ic.idCita = c.id
+                    INNER JOIN Inmueble im ON ic.idInmueble = im.Id 
+                    ORDER BY cl.Nombres, cl.Apellidos, c.NoCita ) mt ";
+
+        if ($id == NULL)
+        {
+            // Si no hay Id, entonces regresa todas las citas
+            $query = $this->db->query($sql);
+            return $query->result();
+        } else {
+            // Regresa solo la cita asociada a este Id
+            $query = $this->db->query($sql . " WHERE mt.id = ?", array($id));
+            return $query->row();
+        }
     }
 
     public function insertarCita()
     {    
-        $data = array(
+        $citaData = array(
             'idCliente' => $this->input->post('idCliente'),
             'noCita' => $this->input->post('noCita'),
             'fecha' => $this->input->post('fecha'),
             'comentarios' => $this->input->post('comentarios')
         );
-        return $this->db->insert('Cita', $data);
+        // Insertar los datos principales de la tabla Cita
+        $this->db->insert('Cita', $citaData);
+        // Obtener Id del ultimo insert
+        $insert_id = $this->db->insert_id();
+
+        // Insertar la relacion de cita - Inmueble
+        $inmuebleData = array(
+            'idCita' => $insert_id,
+            'idInmueble' => $this->input->post('idInmueble'),
+            'tipoInteresadoId' => $this->input->post('tipoInteresadoId'),
+        );
+        // Insertar datos de tabla secundaria 
+        $this->db->insert('InmuebleCliente', $inmuebleData);
+    }
+
+    public function getSingleCita()
+    {
+
     }
 }

@@ -9,14 +9,14 @@
     <!-- ============================================================== -->
     <!-- Bread crumb and right sidebar toggle -->
     <!-- ============================================================== -->
-    <div class="row page-titles">
+    <!-- <div class="row page-titles">
         <div class="col-md-5 align-self-center">
             <h3 class="text-themecolor">Insertar Cita</h3>
         </div>
         <div class="">
             <button class="right-side-toggle waves-effect waves-light btn-inverse btn btn-circle btn-sm pull-right m-l-10"><i class="ti-settings text-white"></i></button>
         </div>
-    </div>
+    </div> -->
     <!-- ============================================================== -->
     <!-- End Bread crumb and right sidebar toggle -->
     <!-- ============================================================== -->
@@ -30,25 +30,29 @@
                     <h4 class="card-title">Citas</h4>
                     <h6 class="card-subtitle">Exportar las citas a CSV, Excel, PDF o imprimirlas.</h6>
                     <div class="table-responsive m-t-40">
-                        <table id="inmuebles" class="display nowrap table table-hover table-striped table-bordered" 
+                        <table id="citasList" class="display nowrap table table-hover table-striped table-bordered" 
                             cellspacing="0" width="100%">
                             <thead>
                                 <tr>
-                                <th>Nombre</th>
-                                <th>Apellidos</th>
+                                <th>Cliente</th>
                                 <th>NoCita</th>
                                 <th>Fecha</th>
+                                <th>Actualizar</th>
                                 </tr>
                             </thead>
                             <tbody>                            
-                            <? foreach($data as $d) { ?>
-                                <tr>
-                                    <th><?echo $d->Nombres?></th>
-                                    <th><?echo $d->Apellidos?></th>
-                                    <th><?echo $d->NoCita?></th>
-                                    <th><?echo $d->Fecha?></th>
-                                </tr>
-                            <?}?>
+                                <? foreach($Citas as $d) { ?>
+                                    <tr>
+                                        <th><?echo $d->Nombres . " " . $d->Apellidos?></th>
+                                        <th><?echo $d->NoCita?></th>
+                                        <th><?echo $d->Fecha?></th>
+                                        <th>
+                                            <form method="POST" action="<?php echo base_url('index.php/citas/update/'.$d->id);?>">
+                                                <button type="submit" class="btn btn-danger btn-xs">Actualizar</button>
+                                            </form>
+                                        </th>
+                                    </tr>
+                                <?}?>
                             </tbody>                            
                         </table>
                     </div>
