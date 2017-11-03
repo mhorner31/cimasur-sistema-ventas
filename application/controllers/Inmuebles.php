@@ -4,12 +4,7 @@
  
 class Inmuebles extends CI_Controller
 {
-     
-    /**
-    * Get All Data from this method.
-    *
-    * @return Response
-   */
+
     public function __construct()
     {
       //load database in autoload libraries
@@ -29,56 +24,54 @@ class Inmuebles extends CI_Controller
         $this->load->view('header_app');
         $this->load->view('topbar_app');
         $this->load->view('sidebar_app');
-        $this->load->view('inmuebles', $data);
+        $this->load->view('Inmuebles/inmuebles', $data);
         $this->load->view('footer_app');
     }
 
-    public function create()
+    public function update($id = NULL)
     {
-
-        $inmuebles=new InmueblesModel;
-        $data['tipoInmueble']=$inmuebles->getTipoInmueble();
-        $data['dispInmueble']=$inmuebles->getDisponibilidadInmueble();
 
         $this->load->helper('url');
         $this->load->helper('html');
-
+ 
         $this->load->view('header_app');
         $this->load->view('topbar_app');
         $this->load->view('sidebar_app');
-        $this->load->view('inmuebles_add', $data);
+
+        $inmuebles=new InmueblesModel;
+        $data['inmuebles']=$inmuebles->getInmuebles($id);
+        $data['tipoInmueble']=$inmuebles->getTipoInmueble();
+        $data['dispInmueble']=$inmuebles->getDisponibilidadInmueble();
+
+
+        if ($id == NULL) {
+            // Settear los valores de default
+            $data['id'] = 0;            
+            $data['Nombre'] = "";
+            $data['Tipo'] = 0;
+            $data['Disponibilidad'] = 0;
+            $data['Descripcion'] = "";
+            $data['Precio'] = 0;
+
+        } else {
+            
+            // Settear los valores de la BD
+            $inmueble = $inmuebles->getInmuebles($id);
+
+            $data['id'] = $id;
+            $data['Nombre'] = $inmueble->Nombre;
+            $data['Tipo'] = $inmueble->Tipo;
+            $data['Precio'] = $inmueble->Precio;
+            $data['Disponibilidad'] = $inmueble->Disponibilidad;
+            $data['Descripcion'] = $inmueble->Descripcion;
+        }
+
+        $this->load->view('inmuebles_update', $data);
         $this->load->view('footer_app');
     }
 
-     /**
-    * Edit Data from this method.
-    *
-    * @return Response
-   */
-   public function edit($id)
-   {
-       
-       $this->load->helper('url');
-       $this->load->helper('html');
-
-       $this->load->view('header_app');
-       $this->load->view('topbar_app');
-       $this->load->view('sidebar_app');
-
-       $inmuebles=new InmueblesModel;
-       $data['data']=$inmuebles->getInmueble($id);
-       
-       $this->load->view('inmuebles_update', $data);
-       $this->load->view('footer_app');
-   }
-
-   /**
-    * Delete Data from this method.
-    *
-    * @return Response
-   */
-   public function delete($id)
-   {
+    public function delete($id)
+    {
        $this->load->helper('url');
        $this->load->helper('html');
        
@@ -87,12 +80,19 @@ class Inmuebles extends CI_Controller
        redirect(base_url('/index.php/inmuebles/'));
    }
 
-    /**
-    * Store Data from this method.
-    *
-    * @return Response
-   */
-   public function add()
+   public function postData($id)
+   {
+       if ($id == 0)
+       {
+           $this->addInmueble();
+       } 
+       else 
+       {
+           $this->updateInmueble($id);
+       }
+   }
+
+   public function addInmueble()
    {
        $this->load->helper('url');
        $this->load->helper('html');
@@ -102,8 +102,12 @@ class Inmuebles extends CI_Controller
        redirect(base_url('/index.php/inmuebles/'));
     }
 
-    public function udpate($id) 
+    public function updateInmueble($id) 
     {
+
+        $this->load->helper('url');
+        $this->load->helper('html');
+        
         $inmuebles=new InmueblesModel;
         $inmuebles->udpateItem($id);
         redirect(base_url('/index.php/inmuebles/'));

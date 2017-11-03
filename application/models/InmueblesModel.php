@@ -19,23 +19,21 @@ class InmueblesModel extends CI_Model
         return $query->result();        
     }
 
-    public function getInmuebles(){
-        $query = $this->db->query(
-            "SELECT i.id, i.Nombre, i.Descripcion, i.Precio, d.Nombre as Disponibilidad, t.Nombre as Tipo
-             FROM Inmueble i
-             INNER JOIN DispInmueble d ON i.idDisponibilidad = d.id
-             INNER JOIN TipoInmueble t ON i.idTipo = t.id");
-        return $query->result();
-    }
+    public function getInmuebles($id = NULL){
+        $sql = "SELECT i.id, i.Nombre, i.Descripcion, i.Precio, d.Nombre as Disponibilidad, t.Nombre as Tipo
+                  FROM Inmueble i
+                  INNER JOIN DispInmueble d ON i.idDisponibilidad = d.id
+                  INNER JOIN TipoInmueble t ON i.idTipo = t.id";
+         
+         if ($id == NULL)
+         {
+             $query = $this->db->query($sql);
+             return $query->result();
+         } else {
+             $query = $this->db->query($sql . " WHERE i.id = ?", array($id));
+             return $query->row();
+         }
 
-    public function getInmueble($id){
-        $query = $this->db->query(
-            "SELECT i.id, i.Nombre, i.Descripcion, i.Precio, d.Nombre as Disponibilidad, t.Nombre as Tipo
-             FROM Inmueble i
-             INNER JOIN DispInmueble d ON i.idDisponibilidad = d.id
-             INNER JOIN TipoInmueble t ON i.idTipo = t.id 
-             WHERE i.id = $id");
-        return $query->result();
     }
 
     public function insertItem()
@@ -61,11 +59,10 @@ class InmueblesModel extends CI_Model
             'Descripcion' => $this->input->post('descripcion')
 
         );
+        $this->db->where('id', $id);        
+        $this->db->update('Inmueble', $data);
         
-        return $this->db->update('Inmueble',$data);
-               
     }
-
 }
 
 ?>

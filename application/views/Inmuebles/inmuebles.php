@@ -15,7 +15,7 @@
                     <h4 class="card-title">Inmuebles</h4>
                     <h6 class="card-subtitle">Exportar los inmuebles a Excel, PDF o Imprmirlos.</h6>
                     <button type="button" class="btn waves-effect waves-light btn-secondary">
-                        <a href="<?php echo base_url('index.php/inmuebles/create') ?>">Agregar Inmueble</a></button>
+                        <a href="<?php echo base_url('index.php/inmuebles/update/') ?>">Agregar Inmueble</a></button>
                     <div class="table-responsive m-t-40">
                         <table id="inmuebles" class="display nowrap table table-hover table-striped table-bordered" 
                             cellspacing="0" width="100%">
@@ -37,7 +37,7 @@
                                             <a href="<?php echo base_url('index.php/inmuebles/delete/'.$d->id) ?>">Eliminar</a>
                                         </button>
                                     </th>
-                                    <th><a href="<?php echo base_url('index.php/inmuebles/edit/'.$d->id);?>"><?echo $d->Nombre;?> </a></th>
+                                    <th><a href="<?php echo base_url('index.php/inmuebles/update/'.$d->id);?>"><?echo $d->Nombre;?> </a></th>
                                     <th><?echo $d->Tipo?></th>
                                     <th><?echo $d->Disponibilidad?></th>
                                     <th><?echo $d->Precio?></th>
