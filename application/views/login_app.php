@@ -12,8 +12,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">
     <title>Cimasur</title>
     <!-- Bootstrap Core CSS -->
-    <link href="../assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <?php echo link_tag('../assets/plugins/bootstrap/css/bootstrap.min.css'); ?>
+    <?php echo link_tag('assets/plugins/bootstrap/css/bootstrap.min.css'); ?>
     <!-- page css -->
     <?php echo link_tag('css/pages/login-register-lock.css'); ?>
     <!-- Custom CSS -->
@@ -84,11 +83,11 @@
     <!-- Bootstrap tether Core JavaScript -->
     <?php echo link_tag('assets/plugins/bootstrap/js/popper.min.js'); ?>
     <?php echo link_tag('assets/plugins/bootstrap/css/bootstrap.min.css'); ?>
-    <!--Custom JavaScript -->
+    <!--Custom JavaScript 
     <script type="text/javascript">
-        $(function() {
+       <$(function() {
             $(".preloader").fadeOut();
-        });
+        });-->
         $(function() {
             $('[data-toggle="tooltip"]').tooltip()
         });
