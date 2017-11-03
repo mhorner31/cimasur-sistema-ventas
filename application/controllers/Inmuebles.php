@@ -21,11 +21,11 @@ class Inmuebles extends CI_Controller
         $this->load->helper('url');
         $this->load->helper('html');
 
-        $this->load->view('header_app');
-        $this->load->view('topbar_app');
-        $this->load->view('sidebar_app');
+        $this->load->view('Plantilla/header_app');
+        $this->load->view('Plantilla/topbar_app');
+        $this->load->view('Plantilla/sidebar_app');
         $this->load->view('Inmuebles/inmuebles', $data);
-        $this->load->view('footer_app');
+        $this->load->view('Plantilla/footer_app');
     }
 
     public function update($id = NULL)
@@ -34,9 +34,9 @@ class Inmuebles extends CI_Controller
         $this->load->helper('url');
         $this->load->helper('html');
  
-        $this->load->view('header_app');
-        $this->load->view('topbar_app');
-        $this->load->view('sidebar_app');
+        $this->load->view('Plantilla/header_app');
+        $this->load->view('Plantilla/topbar_app');
+        $this->load->view('Plantilla/sidebar_app');
 
         $inmuebles=new InmueblesModel;
         $data['inmuebles']=$inmuebles->getInmuebles($id);
@@ -66,8 +66,8 @@ class Inmuebles extends CI_Controller
             $data['Descripcion'] = $inmueble->Descripcion;
         }
 
-        $this->load->view('inmuebles_update', $data);
-        $this->load->view('footer_app');
+        $this->load->view('Inmuebles/inmuebles_update', $data);
+        $this->load->view('Plantilla/footer_app');
     }
 
     public function delete($id)

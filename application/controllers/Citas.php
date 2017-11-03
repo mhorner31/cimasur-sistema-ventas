@@ -22,11 +22,11 @@ class Citas extends CI_Controller {
         $citasModel = new CitasModel;
         $data['Citas'] = $citasModel->getCitas();
 
-        $this->load->view('header_app');
-        $this->load->view('topbar_app');
-        $this->load->view('sidebar_app');
+        $this->load->view('Plantilla/header_app');
+        $this->load->view('Plantilla/topbar_app');
+        $this->load->view('Plantilla/sidebar_app');
         $this->load->view('Citas/list', $data);
-        $this->load->view('footer_app');
+        $this->load->view('Plantilla/footer_app');
     }
 
     public function update($id = NULL) 
@@ -56,11 +56,11 @@ class Citas extends CI_Controller {
         }
 
         // Cargar las vistas
-        $this->load->view('header_app');
-        $this->load->view('topbar_app');
-        $this->load->view('sidebar_app');
+        $this->load->view('Plantilla/header_app');
+        $this->load->view('Plantilla/topbar_app');
+        $this->load->view('Plantilla/sidebar_app');
         $this->load->view('Citas/update', $data);
-        $this->load->view('footer_app');
+        $this->load->view('Plantilla/footer_app');
     }
 
     public function postData($id)
