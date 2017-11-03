@@ -42,26 +42,25 @@
     <!-- Main wrapper - style you can find in pages.scss -->
     <!-- ============================================================== -->
     <section id="wrapper">
-        <div class="login-register" style="background-image:url(../assets/images/background/login-register.jpg);">
+        <div class="login-register" style="background-image:url('<?php echo base_url('assets/images/background/login-register.jpg');?>')">
             <div class="login-box card">
             <img src="<?php echo base_url();?>/assets/images/cimasur_logo_back.png" alt="homepage" class="dark-logo" />
                 <div class="card-body">
-                    <form class="form-horizontal form-material" id="loginform" action="index.html">
+                    <form class="form-horizontal form-material" id="loginform" action="<?php echo base_url('index.php/login/iniciarSesion');?>"  method="POST">
                         <h3 class="box-title m-b-20">Iniciar Sesión</h3>
                         <div class="form-group ">
                             <div class="col-xs-12">
-                                <input class="form-control" type="text" required="" placeholder="Usuario"> </div>
+                                <input class="form-control" type="text" required="" placeholder="Usuario" name="nickname"> </div>
                         </div>
                         <div class="form-group">
                             <div class="col-xs-12">
-                                <input class="form-control" type="password" required="" placeholder="Contraseña"> </div>
+                                <input class="form-control" type="password" required="" placeholder="Contraseña" name="password"> </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-md-12">
-                                <div class="checkbox checkbox-info pull-left p-t-0">
-                                    <input id="checkbox-signup" type="checkbox" class="filled-in chk-col-light-blue">
-                                    <label for="checkbox-signup"> Recordarme en esta equipo </label>
-                                </div> 
+                                <div>
+                                    <?php echo $mensajeLogin?>
+                                </div>
                             </div>
                         </div>
                         <div class="form-group text-center">
@@ -84,22 +83,6 @@
     <!-- Bootstrap tether Core JavaScript -->
     <?php echo link_tag('assets/plugins/bootstrap/js/popper.min.js'); ?>
     <?php echo link_tag('assets/plugins/bootstrap/css/bootstrap.min.css'); ?>
-    <!--Custom JavaScript 
-    <script type="text/javascript">
-       <$(function() {
-            $(".preloader").fadeOut();
-        });-->
-        $(function() {
-            $('[data-toggle="tooltip"]').tooltip()
-        });
-        // ============================================================== 
-        // Login and Recover Password 
-        // ============================================================== 
-        $('#to-recover').on("click", function() {
-            $("#loginform").slideUp();
-            $("#recoverform").fadeIn();
-        });
-    </script>
     
 </body>
 

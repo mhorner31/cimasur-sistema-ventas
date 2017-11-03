@@ -7,11 +7,11 @@
                 <!-- Sidebar navigation-->
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
-                        <li class="user-profile"> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-account-circle"></i><span class="hide-menu">Usuario Sistema </span></a>
+                        <li class="user-profile"> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-account-circle"></i><span class="hide-menu"> Usuario Sistema</span></a>
                             <ul aria-expanded="false" class="collapse">
                                 <li><a href="javascript:void()">Mi Perfil </a></li>
                                 <li><a href="javascript:void()">Cambiar Contraseña</a></li>
-                                <li><a href="javascript:void()">Cerrar Sesión</a></li>
+                                <li><a href="<?php echo base_url();?>index.php/login/cerrarSesion">Cerrar Sesión</a></li>
                             </ul>
                         </li>
                         <li class="nav-devider"></li>
@@ -40,16 +40,15 @@
                         </li>
                         <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-table"></i><span class="hide-menu">Citas</span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="table-basic.html">Citas Pendientes</a></li>
-                                <li><a href="table-layout.html">Citas Concluidas</a></li>
-                                <li><a href="table-data-table.html">Buscar Cita</a></li>
-                                <li><a href="table-footable.html">Agregar Cita</a></li>
+                                <li><a href="<?php echo base_url();?>index.php/citas">Citas Pendientes</a></li>
+                                <li><a href="<?php echo base_url();?>index.php/citas">Citas Concluidas</a></li>
+                                <li><a href="<?php echo base_url();?>index.php/citas/update">Agregar Cita</a></li>
                             </ul>
                         </li>
                         <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-book-open-variant"></i><span class="hide-menu">Inmuebles</span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="layout-single-column.html">Catálogo</a></li>
-                                <li><a href="layout-fix-header.html">Agregar Inmueble</a></li>
+                                <li><a href="<?php echo base_url();?>index.php/inmuebles">Catálogo</a></li>
+                                <li><a href="<?php echo base_url();?>index.php/inmuebles/update">Agregar Inmueble</a></li>
                             </ul>
                         </li>
                         <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-file-chart"></i><span class="hide-menu">Reportes</span></a>
