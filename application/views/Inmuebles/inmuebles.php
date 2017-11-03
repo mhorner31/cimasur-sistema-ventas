@@ -22,12 +22,12 @@
                             cellspacing="0" width="97%">
                             <thead>
                                 <tr>
-                                    <th></th>
                                     <th>Nombre</th>
                                     <th>Tipo</th>
                                     <th>Disponibilidad</th>
                                     <th>Precio</th>
                                     <th>Descripcion</th>
+                                    <th>Eliminar</th>                                    
                                 </tr>
                             </thead>
                             <tbody>                            

@@ -68,7 +68,7 @@
                                 <label for="descripcion" class="col-2 col-form-label">Descripción</label>
                                 <div class="col-10">
                                 <div class="input-group">                                    
-                                    <input class="form-control" value="<?echo $Descripcion?>" name="descripcion" required data-validation-required-message="Descripción de inmueble inválido."></input>
+                                    <textarea rows="5" cols="10" class="form-control" name="descripcion" required data-validation-required-message="Descripción de inmueble inválido."><?echo $Descripcion?></textarea>
                                 </div>
                                 </div>
                             </div>             
