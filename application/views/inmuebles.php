@@ -36,11 +36,11 @@
                                             <a href="<?php echo base_url('index.php/inmuebles/delete/'.$d->id) ?>">Eliminar</a>
                                         </button>
                                     </th>
-                                    <th><a href="<?php echo base_url('index.php/inmuebles/edit/'.$d->id) ?>"><?echo $d->Nombre?> </a></th>
+                                    <th><a href="<?php echo base_url('index.php/inmuebles/edit/'.$d->id);?>"><?echo $d->Nombre;?> </a></th>
                                     <th><?echo $d->Tipo?></th>
                                     <th><?echo $d->Disponibilidad?></th>
                                     <th><?echo $d->Precio?></th>
-                                    <th data-toggle="tooltip" data-placement="left" title="<?echo $d->Descripcion?>"><?echo $d->Descripcion?></th>
+                                    <th data-toggle="tooltip" data-placement="left" title="<?echo $d->Descripcion;?>"><?echo $d->Descripcion;?></th>
 
                                 </tr>
                             <?}?>

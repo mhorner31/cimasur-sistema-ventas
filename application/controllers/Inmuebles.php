@@ -46,7 +46,7 @@ class Inmuebles extends CI_Controller
         $this->load->view('header_app');
         $this->load->view('topbar_app');
         $this->load->view('sidebar_app');
-        $this->load->view('inmuebles_modify', $data);
+        $this->load->view('inmuebles_add', $data);
         $this->load->view('footer_app');
     }
 
@@ -57,7 +57,6 @@ class Inmuebles extends CI_Controller
    */
    public function edit($id)
    {
-       $data = $this->db->get_where('Inmueble', array('id' => $id))->row();
        
        $this->load->helper('url');
        $this->load->helper('html');
@@ -65,7 +64,11 @@ class Inmuebles extends CI_Controller
        $this->load->view('header_app');
        $this->load->view('topbar_app');
        $this->load->view('sidebar_app');
-       $this->load->view('inmuebles_modify',$data);
+
+       $inmuebles=new InmueblesModel;
+       $data['data']=$inmuebles->getInmueble($id);
+       
+       $this->load->view('inmuebles_update', $data);
        $this->load->view('footer_app');
    }
 
@@ -77,22 +80,12 @@ class Inmuebles extends CI_Controller
    public function delete($id)
    {
        $this->load->helper('url');
-
+       $this->load->helper('html');
+       
        $this->db->where('id', $id);
        $this->db->delete('Inmueble');
        redirect(base_url('/index.php/inmuebles/'));
    }
-
-   
-
-    public function update($id)
-    {
-        $this->load->helper('url');
-        
-        $inmuebles=new InmueblesModel;
-        $inmuebles->updateItem($id);
-        redirect(base_url('/index.php/inmuebles/'));
-    }
 
     /**
     * Store Data from this method.
@@ -102,11 +95,18 @@ class Inmuebles extends CI_Controller
    public function add()
    {
        $this->load->helper('url');
+       $this->load->helper('html');
 
        $inmuebles=new InmueblesModel;
-       $inmuebles->insterItem();
+       $inmuebles->insertItem();
        redirect(base_url('/index.php/inmuebles/'));
     }
 
+    public function udpate($id) 
+    {
+        $inmuebles=new InmueblesModel;
+        $inmuebles->udpateItem($id);
+        redirect(base_url('/index.php/inmuebles/'));
+    }
 }
 ?>
