@@ -17,7 +17,8 @@
                     <button type="button" class="btn waves-effect waves-light btn-secondary">
                         <a href="<?php echo base_url('index.php/inmuebles/create') ?>">Agregar Inmueble</a></button>
                     <div class="table-responsive m-t-40">
-                        <table id="inmuebles" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
+                        <table id="inmuebles" class="display nowrap table table-hover table-striped table-bordered" 
+                            cellspacing="0" width="100%">
                             <thead>
                                 <tr>
                                     <th></th>
