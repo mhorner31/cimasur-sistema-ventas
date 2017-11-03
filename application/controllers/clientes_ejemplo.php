@@ -8,10 +8,10 @@ class Clientes_ejemplo extends CI_Controller {
         $this->load->helper('html');
 
 
-        $this->load->view('header_app');
-        $this->load->view('topbar_app');
-        $this->load->view('sidebar_app');
+        $this->load->view('Plantilla/header_app');
+        $this->load->view('Plantilla/topbar_app');
+        $this->load->view('Plantilla/sidebar_app');
         $this->load->view('clientes_ejemplo');
-        $this->load->view('footer_app');
+        $this->load->view('Plantilla/footer_app');
     }
 }

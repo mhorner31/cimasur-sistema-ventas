@@ -12,8 +12,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">
     <title>Cimasur</title>
     <!-- Bootstrap Core CSS -->
-    <link href="../assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <?php echo link_tag('../assets/plugins/bootstrap/css/bootstrap.min.css'); ?>
+    <?php echo link_tag('assets/plugins/bootstrap/css/bootstrap.min.css'); ?>
     <!-- page css -->
     <?php echo link_tag('css/pages/login-register-lock.css'); ?>
     <!-- Custom CSS -->
@@ -45,6 +44,7 @@
     <section id="wrapper">
         <div class="login-register" style="background-image:url(../assets/images/background/login-register.jpg);">
             <div class="login-box card">
+            <img src="<?php echo base_url();?>/assets/images/cimasur_logo_back.png" alt="homepage" class="dark-logo" />
                 <div class="card-body">
                     <form class="form-horizontal form-material" id="loginform" action="index.html">
                         <h3 class="box-title m-b-20">Iniciar Sesión</h3>
@@ -84,11 +84,11 @@
     <!-- Bootstrap tether Core JavaScript -->
     <?php echo link_tag('assets/plugins/bootstrap/js/popper.min.js'); ?>
     <?php echo link_tag('assets/plugins/bootstrap/css/bootstrap.min.css'); ?>
-    <!--Custom JavaScript -->
+    <!--Custom JavaScript 
     <script type="text/javascript">
-        $(function() {
+       <$(function() {
             $(".preloader").fadeOut();
-        });
+        });-->
         $(function() {
             $('[data-toggle="tooltip"]').tooltip()
         });
