@@ -19,11 +19,11 @@
                         <h4 class="card-title">Inmuebles</h4>
                         <h6 class="card-subtitle">Alta de inmuebles con descripción, precio y disponibilidad. </h6>
                         
-                        <form class="form">
+                        <form class="form" action="<?php echo base_url('index.php/inmuebles/');?>">
                             <div class="form-group m-t-40 row">
                                 <label for="nombre" class="col-2 col-form-label">Nombre del Inmueble</label>
                                 <div class="col-10">
-                                    <input class="form-control" type="text" value="" id="nombre" required data-validation-required-message="Nombre de inmueble inválido.">
+                                    <input class="form-control" type="text" value="<?echo $data->Nombre?>" id="nombre" required data-validation-required-message="Nombre de inmueble inválido.">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -42,7 +42,7 @@
                                 <label for="precio" class="col-2 col-form-label">Precio del Inmueble</label>
                                 <div class="col-10">
                                 <div class="input-group">
-                                    <input type="number" min="0" value="0" name="onlyNum" class="form-control" required="" data-validation-required-message="Campo requerido. Verifica que está correcto el valor." aria-invalid="false"> </div>
+                                    <input type="number" min="0" value="<?echo $data->Precio?>" name="onlyNum" class="form-control" required="" data-validation-required-message="Campo requerido. Verifica que está correcto el valor." aria-invalid="false"> </div>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -59,7 +59,7 @@
                             <div class="form-group row">
                                 <label for="descripcion" class="col-2 col-form-label">Descripción</label>
                                 <div class="col-10">
-                                    <textarea class="form-control" value="" id="descripcion" required data-validation-required-message="Descripción de inmueble inválido."></textarea>
+                                    <textarea class="form-control" value="<?echo $data->Descripcion?>" id="descripcion" required data-validation-required-message="Descripción de inmueble inválido."></textarea>
                                 </div>
                             </div>                    
                         </form>
