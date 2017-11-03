@@ -28,7 +28,10 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">Citas</h4>
-                    <h6 class="card-subtitle">Exportar las citas a CSV, Excel, PDF o imprimirlas.</h6>
+                    <h6 class="card-subtitle">Exportar las citas a Excel, PDF o imprimirlas</h6>
+                    <button type="button" class="btn waves-effect waves-light btn-secondary">
+                        <a href="<?php echo base_url('index.php/citas/update/') ?>">Agregar Nueva Cita</a>
+                    </button>
                     <div class="table-responsive m-t-40">
                         <table id="citasList" class="display nowrap table table-hover table-striped table-bordered" 
                             cellspacing="0" width="100%">
@@ -36,6 +39,7 @@
                                 <tr>
                                 <th>Cliente</th>
                                 <th>NoCita</th>
+                                <th>Interes</th>
                                 <th>Fecha</th>
                                 <th>Actualizar</th>
                                 </tr>
@@ -45,6 +49,7 @@
                                     <tr>
                                         <th><?echo $d->Nombres . " " . $d->Apellidos?></th>
                                         <th><?echo $d->NoCita?></th>
+                                        <th><?echo $d->Interesado?></th>
                                         <th><?echo $d->Fecha?></th>
                                         <th>
                                             <form method="POST" action="<?php echo base_url('index.php/citas/update/'.$d->id);?>">
