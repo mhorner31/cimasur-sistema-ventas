@@ -44,6 +44,7 @@
     <section id="wrapper">
         <div class="login-register" style="background-image:url(../assets/images/background/login-register.jpg);">
             <div class="login-box card">
+            <img src="<?php echo base_url();?>/assets/images/cimasur_logo_back.png" alt="homepage" class="dark-logo" />
                 <div class="card-body">
                     <form class="form-horizontal form-material" id="loginform" action="index.html">
                         <h3 class="box-title m-b-20">Iniciar Sesión</h3>
