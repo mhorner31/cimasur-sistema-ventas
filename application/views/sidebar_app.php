@@ -19,7 +19,7 @@
                         <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">Principal</span></a>
                             <ul aria-expanded="false" class="collapse">
                                 <li><a href="index.html">Clientes </a></li>
-                                <li><a href="index2.html">Inmuebles</a></li>
+                                <li><a href="index.php/Inmuebles/inmuebles">Inmuebles</a></li>
                                 <li><a href="index3.html">Vendedores</a></li>
                                 <li><a href="index4.html">Reportes</a></li>
                             </ul>

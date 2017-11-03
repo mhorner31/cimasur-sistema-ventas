@@ -75,7 +75,7 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost:3306',
+	'hostname' => 'localhost:8181',
 	'username' => 'cimasur',
 	'password' => 'cimasur',
 	'database' => 'CimasurDB',
