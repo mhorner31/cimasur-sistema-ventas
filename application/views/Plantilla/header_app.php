@@ -31,6 +31,7 @@
     <?php echo link_tag('css/pages/dashboard1.css'); ?>
     <!-- You can change the theme colors from here -->
     <?php echo link_tag('css/colors/red-dark.css'); ?>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>

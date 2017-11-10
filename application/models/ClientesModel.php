@@ -1,10 +1,38 @@
 <?php
 
-class CitasModel extends CI_Model {
+class ClientesModel extends CI_Model {
 
     public function __construct(){
         $this->load->database();
     }
+
+    /**
+     * Trae todos los estados
+     */
+    public function getEstados()
+    {
+        $query = $this->db->get("Estados");
+        return $query->result();        
+    }
+
+    /**
+     * Trae la lista completa de municipios
+     */
+    public function getMunicipios($idEdo)
+    {
+        $query = $this->db->get_where("Municipios", array("estado_id" => $idEdo));
+        return $query->result();    
+    }
+
+    /**
+     * Traer la enumeración de Como Se Entero
+     */
+    public function getComoSeEntero()
+    {
+        $query = $this->db->get("ComoSeEntero");
+        return $query->result();        
+    }
+
 
     public function getTipoInteresadoEnum()
     {
@@ -16,7 +44,7 @@ class CitasModel extends CI_Model {
     {
         if ($idVendedor != NULL)
         {
-            $query = $this->db->get_where("Cliente", array("idVendedor" => $idVendedor));
+            $query = $this->db->get_where("Cliente", array("VendedorId" => $idVendedor));
             return $query->result();
         }
         return NULL;
