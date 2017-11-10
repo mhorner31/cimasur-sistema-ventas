@@ -60,6 +60,7 @@ class Clientes extends CI_Controller {
         $this->load->view('Plantilla/topbar_app');
         $this->load->view('Plantilla/sidebar_app');
         $this->load->view('Clientes/update', $data);
+        $this->load->view('Clientes/javascript');
         $this->load->view('Plantilla/footer_app');
     }
 

@@ -51,12 +51,6 @@
                             <div class="form-group">
                                 <label>Colonia o Fraccionamiento</label>
                                 <input type="text" class="form-control form-control-line" value="<? echo $colonia ?>" name="colonia"> </div>
-                            
-                            <div class="form-group">
-                                <label>Municipio o ciudad</label>
-                                <select name="municipio" id="municipios_select" disabled>
-                                    <option value="">No se ha seleccionado estado</option>
-                                </select> </div>
 
                             <div class="form-group">
                                 <label>Estado</label>
@@ -65,6 +59,12 @@
                                     <? foreach ($Estados as $e) { ?>      
                                         <option value="<? echo $e->id ?>"><? echo $e->nombre?></option>      
                                     <? }?>
+                                </select> </div>
+
+                            <div class="form-group">
+                                <label>Municipio o ciudad</label>
+                                <select name="municipio" id="municipios_select" disabled>
+                                    <option value="">No se ha seleccionado estado</option>
                                 </select> </div>
 
                             <div class="form-group">
@@ -84,6 +84,15 @@
                                         <option value="<? echo $e->id ?>"><? echo $e->Descripcion?></option>      
                                     <? }?>
                                 </select> </div>
+
+                            <div>
+                                <div class="form-group">
+                                <label>¿Hizo el recorrido?</label><br>
+                                <div class="switch">
+                                    <label>NO
+                                    <input type="checkbox" checked><span class="lever"></span>SI</label> </div>
+                                </div>
+                            </div>
 
                             <div class="form-group">
                                 <label>¿Hizo el recorrido?</label><br>
@@ -106,26 +115,3 @@
 <!-- ============================================================== -->
 <!-- End Page wrapper  -->
 <!-- ============================================================== -->
-
-<script type="text/javascript">
-    $(document).ready(function() {
-        $("#estados_select").change(function() {
-
-            id = $("#estados_select").val();
-            url = "<?php echo base_url('index.php/Clientes/municipiosPorEstado'); ?>/" + id;
-
-            $.getJSON(url)
-                .done(function(data) {
-                    var items="";
-                    $.each(data, function(index, item) {
-                        items += "<option value='" + item.id + "'>" + item.nombre + "</option>";
-                    });
-                    $('#municipios_select').prop('disabled', false);
-                    $("#municipios_select").html(items); 
-                })
-                .fail(function(error) {
-                    console.log('error: ', error);
-                });
-        });
-    });
-</script>
