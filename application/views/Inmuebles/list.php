@@ -18,7 +18,7 @@
                         <a href="<?php echo base_url('index.php/inmuebles/update/') ?>">Agregar Inmueble</a>
                     </button>
                     <div class="table-responsive m-t-40">
-                        <table id="inmuebles" class="display wrap table table-hover table-striped table-bordered" 
+                        <table id="table" class="display wrap table table-hover table-striped table-bordered" 
                             cellspacing="0" width="97%">
                             <thead>
                                 <tr>

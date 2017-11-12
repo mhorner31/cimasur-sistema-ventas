@@ -66,7 +66,7 @@
     
     <script src="<?echo base_url();?>assets/plugins/styleswitcher/jQuery.style.switcher.js"></script>
     <script>
-        $('#inmuebles').DataTable({
+        $('#table').DataTable({
             "language": {
             "decimal":        "",
             "emptyTable":     "No hay datos disponibles",
@@ -97,15 +97,6 @@
             ]
         });
     </script>
-    <script>
-        $('#citasList').DataTable({
-            dom: 'Bfrtip',
-            buttons: [
-                'excel', 'pdf', 'print'
-            ]
-        });
-    </script>
-    
 </body>
 
 </html>

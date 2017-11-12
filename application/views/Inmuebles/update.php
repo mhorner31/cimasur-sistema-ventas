@@ -8,7 +8,11 @@
     <div class="container-fluid">
         <div class="row page-titles">
             <div class="col-md-5 align-self-center">
-                <h3 class="text-themecolor">Alta de Inmueble</h3>
+                <?if ($id == 0) { ?>
+                    <h3 class="text-themecolor">Agregar nuevo de inmueble</h3>
+                <? } else { ?>
+                    <h3 class="text-themecolor">Actualizar inmueble</h3>
+                <?}?>      
             </div>
         </div>
         <!-- .row -->
@@ -30,7 +34,6 @@
                                 <label for="tipo" class="col-2 col-form-label">Tipo de Inmueble</label>        
                                 <div class="col-10">
                                         <select class="custom-select col-12" name="tipo">
-                                            <option>Selecciona una opción</option> 
                                             <? foreach ($tipoInmueble as $d) { 
                                                 if($d->Nombre == $Tipo) { ?>
                                                     <option selected id="<?echo $d->id; ?>" value="<?echo $d->id; ?>"><? echo $d->Nombre; ?></option>      
@@ -53,7 +56,6 @@
                                 <label for="disponibilidad" class="col-2 col-form-label">Disponibilidad</label>
                                 <div class="col-10">
                                     <select class="custom-select col-12" name="disponibilidad">
-                                        <option value="">Selecciona una opción</option>
                                         <? foreach ($dispInmueble as $d) { 
                                             if ( $d->Nombre == $Disponibilidad) { ?>      
                                             <option selected id="<?echo $d->id; ?>" value="<?echo $d->id; ?>"><? echo $d->Nombre; ?></option>                                                  

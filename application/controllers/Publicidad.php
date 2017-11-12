@@ -2,21 +2,21 @@
     exit('No direct script access allowed');
 }
  
-class Inmuebles extends CI_Controller
+class Publicidad extends CI_Controller
 {
 
     public function __construct()
     {
       //load database in autoload libraries
         parent::__construct();
-        $this->load->model('InmueblesModel');
+        $this->load->model('PublicidadModel');
     }
 
 
     public function index()
     {
-        $inmuebles=new InmueblesModel;
-        $data['data']=$inmuebles->getInmuebles();
+        $publicidad=new PublicidadModel;
+        $data['data']=$publicidad->getPublicidad();
 
         $this->load->helper('url');
         $this->load->helper('html');
@@ -24,7 +24,7 @@ class Inmuebles extends CI_Controller
         $this->load->view('Plantilla/header_app');
         $this->load->view('Plantilla/topbar_app');
         $this->load->view('Plantilla/sidebar_app');
-        $this->load->view('Inmuebles/list', $data);
+        $this->load->view('Publicidad/list', $data);
         $this->load->view('Plantilla/footer_app');
     }
 
@@ -38,35 +38,23 @@ class Inmuebles extends CI_Controller
         $this->load->view('Plantilla/topbar_app');
         $this->load->view('Plantilla/sidebar_app');
 
-        $inmuebles=new InmueblesModel;
-        $data['inmuebles']=$inmuebles->getInmuebles($id);
-        $data['tipoInmueble']=$inmuebles->getTipoInmueble();
-        $data['dispInmueble']=$inmuebles->getDisponibilidadInmueble();
-
+        $publicidad=new PublicidadModel;
+        $data['publicidad']=$publicidad->getPublicidad($id);
 
         if ($id == NULL) {
             // Settear los valores de default
-            $data['id'] = 0;            
-            $data['Nombre'] = "";
-            $data['Tipo'] = 0;
-            $data['Disponibilidad'] = 0;
+            $data['id'] = 0;                        
             $data['Descripcion'] = "";
-            $data['Precio'] = 0;
-
-        } else {
             
+        } else {
             // Settear los valores de la BD
-            $inmueble = $inmuebles->getInmuebles($id);
+            $publicidad = $publicidad->getPublicidad($id);
 
             $data['id'] = $id;
-            $data['Nombre'] = $inmueble->Nombre;
-            $data['Tipo'] = $inmueble->Tipo;
-            $data['Precio'] = $inmueble->Precio;
-            $data['Disponibilidad'] = $inmueble->Disponibilidad;
-            $data['Descripcion'] = $inmueble->Descripcion;
+            $data['Descripcion'] = $publicidad->Descripcion;
         }
 
-        $this->load->view('Inmuebles/update', $data);
+        $this->load->view('Publicidad/update', $data);
         $this->load->view('Plantilla/footer_app');
     }
 
@@ -76,41 +64,41 @@ class Inmuebles extends CI_Controller
        $this->load->helper('html');
        
        $this->db->where('id', $id);
-       $this->db->delete('Inmueble');
-       redirect(base_url('/index.php/inmuebles/'));
+       $this->db->delete('ComoSeEntero');
+       redirect(base_url('/index.php/publicidad/'));
    }
 
    public function postData($id)
    {
        if ($id == 0)
        {
-           $this->addInmueble();
+           $this->addPublicidad();
        } 
        else 
        {
-           $this->updateInmueble($id);
+           $this->updatePublicidad($id);
        }
    }
 
-   public function addInmueble()
+   public function addPublicidad()
    {
        $this->load->helper('url');
        $this->load->helper('html');
 
-       $inmuebles=new InmueblesModel;
-       $inmuebles->insertItem();
-       redirect(base_url('/index.php/inmuebles/'));
+       $publicidad=new PublicidadModel;
+       $publicidad->insertItem();
+       redirect(base_url('/index.php/publicidad/'));
     }
 
-    public function updateInmueble($id) 
+    public function updatePublicidad($id) 
     {
 
         $this->load->helper('url');
         $this->load->helper('html');
         
-        $inmuebles=new InmueblesModel;
-        $inmuebles->udpateItem($id);
-        redirect(base_url('/index.php/inmuebles/'));
+        $publicidad=new PublicidadModel;
+        $publicidad->udpateItem($id);
+        redirect(base_url('/index.php/publicidad/'));
     }
 }
 ?>

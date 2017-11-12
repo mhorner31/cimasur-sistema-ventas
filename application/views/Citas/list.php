@@ -33,7 +33,7 @@
                         <a href="<?php echo base_url('index.php/citas/update/') ?>">Agregar Nueva Cita</a>
                     </button>
                     <div class="table-responsive m-t-40">
-                        <table id="citasList" class="display nowrap table table-hover table-striped table-bordered" 
+                        <table id="table" class="display nowrap table table-hover table-striped table-bordered" 
                             cellspacing="0" width="100%">
                             <thead>
                                 <tr>
