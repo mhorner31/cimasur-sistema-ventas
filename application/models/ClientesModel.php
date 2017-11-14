@@ -1,10 +1,93 @@
 <?php
 
-class CitasModel extends CI_Model {
+class ClientesModel extends CI_Model {
 
     public function __construct(){
         $this->load->database();
     }
+
+    /**
+     * Trae todos los estados
+     */
+    public function getEstados()
+    {
+        $query = $this->db->get("Estados");
+        return $query->result();        
+    }
+
+    /**
+     * Trae la lista completa de municipios
+     */
+    public function getMunicipios($idEdo)
+    {
+        $query = $this->db->get_where("Municipios", array("estado_id" => $idEdo));
+        return $query->result();    
+    }
+
+    /**
+     * Traer la enumeración de Como Se Entero
+     */
+    public function getComoSeEntero()
+    {
+        $query = $this->db->get("ComoSeEntero");
+        return $query->result();        
+    }
+
+    /**
+     * Traer todos los clientes
+     */
+    public function getClientes() 
+    {
+        $query = $this->db->get("Cliente");
+        return $query->result(); 
+    }
+
+    public function insertarCliente($idVendedor)
+    {    
+        $clienteData = array(
+            'nombres' => $this->input->post('nombres'),
+            'apellidos' => $this->input->post('apellidos'),
+            'direccion' => $this->input->post('direccion'),
+            'colonia' => $this->input->post('colonia'),
+            'idMunicipio' => $this->input->post('idMunicipio'),
+            'email' => $this->input->post('email'),
+            'idComoSeEntero' => $this->input->post('idComoSeEntero'),
+            'fechaIngreso' => date('Y-m-d\TH:i:s'),
+            'hizoRecorrido' => $this->input->post('hizoRecorrido'),
+            'idVendedor' => $idVendedor
+        );
+        // Insertar los datos principales de la tabla Cita
+        $this->db->insert('Cliente', $citaData);
+        // Obtener Id del ultimo insert
+        $clienteInsert_id = $this->db->insert_id();
+
+        /*// Insertar la relacion de cita - Inmueble
+        $inmuebleData = array(
+            'idCita' => $insert_id,
+            'idMunicipio' => $this->input->post('idInmueble'),
+            'tipoInteresadoId' => $this->input->post('tipoInteresadoId'),
+        );
+        // Insertar datos de tabla secundaria 
+        $this->db->insert('InmuebleCliente', $inmuebleData);*/
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     public function getTipoInteresadoEnum()
     {
@@ -16,7 +99,7 @@ class CitasModel extends CI_Model {
     {
         if ($idVendedor != NULL)
         {
-            $query = $this->db->get_where("Cliente", array("idVendedor" => $idVendedor));
+            $query = $this->db->get_where("Cliente", array("VendedorId" => $idVendedor));
             return $query->result();
         }
         return NULL;
@@ -55,28 +138,7 @@ class CitasModel extends CI_Model {
         }
     }
 
-    public function insertarCita()
-    {    
-        $citaData = array(
-            'idCliente' => $this->input->post('idCliente'),
-            'noCita' => $this->input->post('noCita'),
-            'fecha' => $this->input->post('fecha'),
-            'comentarios' => $this->input->post('comentarios')
-        );
-        // Insertar los datos principales de la tabla Cita
-        $this->db->insert('Cita', $citaData);
-        // Obtener Id del ultimo insert
-        $insert_id = $this->db->insert_id();
-
-        // Insertar la relacion de cita - Inmueble
-        $inmuebleData = array(
-            'idCita' => $insert_id,
-            'idInmueble' => $this->input->post('idInmueble'),
-            'tipoInteresadoId' => $this->input->post('tipoInteresadoId'),
-        );
-        // Insertar datos de tabla secundaria 
-        $this->db->insert('InmuebleCliente', $inmuebleData);
-    }
+    
 
     public function actualizarCita($id)
     {
