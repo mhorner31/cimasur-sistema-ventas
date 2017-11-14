@@ -34,25 +34,25 @@ class Clientes extends CI_Controller {
         $ClientesModel = new ClientesModel;
         $data['Estados'] = $ClientesModel->getEstados();
         $data['ComoSeEntero'] = $ClientesModel->getComoSeEntero();
+        $data['Clientes'] = $ClientesModel->getClientes();
 
 
         if ($id == NULL) {
+
             // Settear los valores de default
+            $data['idCliente'] = 0;
             $data['nombres'] = "";
             $data['apellidos'] = "";
             $data['direccion'] = "";
             $data['colonia'] = "";
             $data['email'] = "";
 
-        } else {
-            
-            // Settear los valores de la BD
-            $cita = $citasModel->getCitas($id);
+            $data['nombresRef'] = "";
+            $data['apellidosRef'] = "";
+            $data['emailRef'] = "";
 
-            $data['IdCita'] = $id;
-            $data['fecha'] = date('Y-m-d\TH:i:s', strtotime($cita->Fecha));
-            $data['noCita'] = $cita->NoCita;
-            $data['comentarios'] = $cita->Comentarios;
+        } else {
+
         }
 
         // Cargar las vistas
@@ -64,7 +64,9 @@ class Clientes extends CI_Controller {
         $this->load->view('Plantilla/footer_app');
     }
 
-
+    /**
+     * Regresa los municipios asociados con el estado
+     */
     public function municipiosPorEstado($idEdo) 
     {
         header('Content-Type: application/json');
@@ -72,30 +74,49 @@ class Clientes extends CI_Controller {
         echo json_encode($ClientesModel->getMunicipios($idEdo));
     }
 
+    /**
+     * Inserta un nuevo registro de cliente
+     */
+    public function insertarNuevoCliente() 
+    {
+        if ($this->validateData()) {
+            /*$ClientesModel = new ClientesModel;
+            $ClientesModel->insertarCliente(1);
+            redirect(base_url('index.php/Clientes/index'));*/
+            echo "Done";
+        } else {
+            echo validation_errors();;
+        }
+    }
+
+    public function validateData()
+    {
+        $this->load->helper(array('form', 'url'));
+        $this->load->library('form_validation');
+
+        $this->form_validation->set_rules(
+            'nombres', 'Nombres', 'trim|required');
+        $this->form_validation->set_rules(
+            'apellidos', 'Apellidos', 'trim|required');
+        $this->form_validation->set_rules(
+            'direccion', 'Direccion', 'trim|required');
+        $this->form_validation->set_rules(
+            'colonia', 'Colonia', 'trim|required');
+        /*$this->form_validation->set_rules(
+            'email', 'Email', 'trim|required|valid_email');*/
+            
+        return $this->form_validation->run();
+    }
 
     public function postData($id)
     {
         if ($id == 0)
         {
-            $this->insertarNuevaCita();
+            $this->insertarNuevoCliente();
         } 
         else 
         {
             $this->actualizarCita($id);
         }
-    }
-
-    public function insertarNuevaCita() 
-    {
-        $citasModel = new CitasModel;
-        $citasModel->insertarCita();
-        redirect(base_url('index.php/citas/index'));
-    }
-
-    public function actualizarCita($id) 
-    {
-        $citasModel = new CitasModel;
-        $citasModel->actualizarCita($id);
-        redirect(base_url('index.php/citas/index'));
     }
 }

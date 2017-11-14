@@ -28,6 +28,7 @@
     <script src="<?php echo base_url();?>js/sidebarmenu.js"></script>
     <!--Custom JavaScript -->
     <script src="<?php echo base_url();?>js/custom.min.js"></script>
+    <script src="<?php echo base_url();?>js/mask.js"></script>
     <!-- ============================================================== -->
     <!-- This page plugins -->
     <!-- ============================================================== -->
