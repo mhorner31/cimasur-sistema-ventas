@@ -29,30 +29,35 @@
                 <div class="card-body">
                     <h4 class="card-title">Citas</h4>
                     <h6 class="card-subtitle">Exportar las citas a Excel, PDF o imprimirlas</h6>
-                    <button type="button" class="btn waves-effect waves-light btn-secondary">
-                        <a href="<?php echo base_url('index.php/citas/update/') ?>">Agregar Nueva Cita</a>
-                    </button>
+                    <div type="button" class="btn waves-effect waves-light btn-secondary">
+                        <a href="<?php echo base_url('index.php/clientes/update/') ?>">Agregar nuevo cliente</a>
+                    </div>
                     <div class="table-responsive m-t-40">
                         <table id="citasList" class="display nowrap table table-hover table-striped table-bordered" 
                             cellspacing="0" width="100%">
                             <thead>
                                 <tr>
                                 <th>Cliente</th>
-                                <th>NoCita</th>
-                                <th>Interes</th>
+                                <th>Ciudad</th>
+                                <th>Estado</th>
+                                <th>Email</th>
+                                <th>Como se Entero</th>
                                 <th>Fecha</th>
-                                <th>Actualizar</th>
+                                <th>Recorrido</th>
                                 </tr>
                             </thead>
                             <tbody>                            
-                                <? foreach($Citas as $d) { ?>
+                                <? foreach($clientes as $d) { ?>
                                     <tr>
                                         <th><?echo $d->Nombres . " " . $d->Apellidos?></th>
-                                        <th><?echo $d->NoCita?></th>
-                                        <th><?echo $d->Interesado?></th>
-                                        <th><?echo $d->Fecha?></th>
+                                        <th><?echo $d->Ciudad?></th>
+                                        <th><?echo $d->Estado?></th>
+                                        <th><?echo $d->Email?></th>
+                                        <th><?echo $d->Enterado?></th>
+                                        <th><?echo $d->FechaIngreso?></th>
+                                        <th><?echo $d->HizoRecorrido?></th>
                                         <th>
-                                            <form method="POST" action="<?php echo base_url('index.php/citas/update/'.$d->id);?>">
+                                            <form method="POST" action="<?php echo base_url('index.php/clientes/update/'.$d->id);?>">
                                                 <button type="submit" class="btn btn-danger btn-xs">Actualizar</button>
                                             </form>
                                         </th>

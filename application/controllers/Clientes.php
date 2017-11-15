@@ -19,13 +19,13 @@ class Clientes extends CI_Controller {
         $this->load->helper('url');
         $this->load->helper('html');
 
-        $citasModel = new CitasModel;
-        $data['Citas'] = $citasModel->getCitas();
+        $clientesModel = new ClientesModel;
+        $data['clientes'] = $clientesModel->getClientes();
 
         $this->load->view('Plantilla/header_app');
         $this->load->view('Plantilla/topbar_app');
         $this->load->view('Plantilla/sidebar_app');
-        $this->load->view('Citas/list', $data);
+        $this->load->view('Clientes/list', $data);
         $this->load->view('Plantilla/footer_app');
     }
 
