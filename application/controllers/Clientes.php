@@ -59,6 +59,16 @@ class Clientes extends CI_Controller {
             // Obtener el cliente a actualizar
             $cliente = $ClientesModel->getCliente($id);
 
+            // DEfaults
+            $data['telCasa'] = "";
+            $data['telOfi'] = "";
+            $data['telCel'] = "";
+            $data['idClienteRef'] = '0';
+            $data['nombresRef'] = "";
+            $data['apellidosRef'] = "";
+            $data['emailRef'] = "";
+            $data['telRef'] = "";
+
             $data['idCliente'] = $cliente->Id;
             $data['nombres'] = $cliente->Nombres;
             $data['apellidos'] = $cliente->Apellidos;
@@ -89,17 +99,6 @@ class Clientes extends CI_Controller {
             $data['idEstado'] = $ClientesModel->getEstadoId($cliente->idMunicipio);
 
             $data['idComoSeEntero'] = $cliente->idComoSeEntero;
-
-            // DEfaults
-            $data['telCasa'] = $result;
-            $data['telOfi'] = $result;
-            $data['telCel'] = $result;
-
-            $data['idClienteRef'] = '0';
-            $data['nombresRef'] = "";
-            $data['apellidosRef'] = "";
-            $data['emailRef'] = "";
-            $data['telRef'] = "";
 
             if ($cliente->idComoSeEntero == '13') {
                 // REferenciador Externo
