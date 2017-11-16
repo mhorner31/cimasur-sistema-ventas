@@ -33,7 +33,7 @@
                         <a href="<?php echo base_url('index.php/clientes/update/') ?>">Agregar nuevo cliente</a>
                     </div>
                     <div class="table-responsive m-t-40">
-                        <table id="citasList" class="display nowrap table table-hover table-striped table-bordered" 
+                        <table id="table" class="display nowrap table table-hover table-striped table-bordered" 
                             cellspacing="0" width="100%">
                             <thead>
                                 <tr>
@@ -54,10 +54,10 @@
                                         <th><?echo $d->FechaIngreso?></th>
                                         <th><?echo $d->HizoRecorrido?></th>
                                         <th>
-                                        <button type="button" class="btn waves-effect waves-light btn-secondary">
-                                            <a href="<?php echo base_url('index.php/clientes/delete/'.$d->id) ?>">Eliminar</a>
-                                        </button>
-                                    </th>
+                                            <a class="btn waves-effect waves-light btn-secondary" onclick="if (confirm('¿Desea elimiar la seleccion?')) { location.href = '<?php echo base_url('index.php/clientes/delete/'.$d->id) ?>'; } return false;">
+                                                Eliminar
+                                            </a>
+                                        </th>
                                     </tr>
                                 <?}?>
                             </tbody>                            
