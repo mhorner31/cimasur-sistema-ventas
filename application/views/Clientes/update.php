@@ -31,6 +31,9 @@
                     <h6 class="card-subtitle">Todos los campos son obligatorios.</h6>
                     <form class="form-material m-t-40" method="post" action="<?php echo base_url('index.php/clientes/postData/'.$idCliente);?>" >
                         <div class="form-body">
+                            <label id="idCliente" hidden><? echo $idCliente ?></label>
+                            <label id="idMunicipio" hidden><? echo $idMunicipio ?></label>
+                            <label id="idEstado" hidden><? echo $idEstado ?></label>
 
                             <h3 class="card-title">Información Personal</h3>
                             <hr>
@@ -129,7 +132,8 @@
                                 <select name="idComoSeEntero" id="entero_select">
                                     <option value="0">Selecciona una opción</option>
                                     <? foreach ($ComoSeEntero as $e) { ?>      
-                                        <option value="<? echo $e->id ?>"><? echo $e->Descripcion?></option>      
+                                        <option <? echo ($e->id == $idComoSeEntero ? 'selected' : '') ?>
+                                            value="<? echo $e->id ?>"><? echo $e->Descripcion?></option>      
                                     <? }?>
                                 </select> </div>
 
@@ -139,7 +143,8 @@
                                 <select name="clienteReferenciador">
                                     <option value="0">Selecciona una opción</option>
                                     <? foreach ($Clientes as $c) { ?>      
-                                        <option value="<? echo $c->Id ?>"><? echo $c->Nombres . " " . $c->Apellidos?></option>      
+                                        <option <? echo ($c->Id == $idClienteRef ? 'selected' : '') ?>
+                                            value="<? echo $c->Id ?>"><? echo $c->Nombres . " " . $c->Apellidos?></option>      
                                     <? }?>
                                 </select> </div>
                             </div>
@@ -159,7 +164,7 @@
                                 <div class="form-group">
                                     <label>Teléfono</label>
                                     <input type="text" placeholder="" data-mask="(999) 999-9999" 
-                                        class="form-control" name="telRef">
+                                        class="form-control" name="telRef" value="<? echo $telRef ?>">
                                     <span class="font-13 text-muted">(999) 999-9999</span> </div>
 
                                 <div class="form-group">

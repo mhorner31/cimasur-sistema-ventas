@@ -56,7 +56,65 @@ class Clientes extends CI_Controller {
             $data['emailRef'] = "";
 
         } else {
+            // Obtener el cliente a actualizar
+            $cliente = $ClientesModel->getCliente($id);
 
+            $data['idCliente'] = $cliente->Id;
+            $data['nombres'] = $cliente->Nombres;
+            $data['apellidos'] = $cliente->Apellidos;
+            $data['direccion'] = $cliente->Direccion;
+            $data['colonia'] = $cliente->Colonia;
+            $data['email'] = $cliente->Email;
+            $data['hizoRecorrido'] = $cliente->HizoRecorrido;
+
+            // Obtener telefono de casa
+            $result = $ClientesModel->getTelefono($id, 'Casa');
+            if ($result != NULL) {
+                $data['telCasa'] = $result;
+            }
+
+            // Obtener telefono de oficina
+            $result = $ClientesModel->getTelefono($id, 'Oficina');
+            if ($result != NULL) {
+                $data['telOfi'] = $result;
+            }
+
+            // Obtener telefono de celiular
+            $result = $ClientesModel->getTelefono($id, 'Movil');
+            if ($result != NULL) {
+                $data['telCel'] = $result;
+            }
+
+            $data['idMunicipio'] = $cliente->idMunicipio;
+            $data['idEstado'] = $ClientesModel->getEstadoId($cliente->idMunicipio);
+
+            $data['idComoSeEntero'] = $cliente->idComoSeEntero;
+
+            // DEfaults
+            $data['telCasa'] = $result;
+            $data['telOfi'] = $result;
+            $data['telCel'] = $result;
+
+            $data['idClienteRef'] = '0';
+            $data['nombresRef'] = "";
+            $data['apellidosRef'] = "";
+            $data['emailRef'] = "";
+            $data['telRef'] = "";
+
+            if ($cliente->idComoSeEntero == '13') {
+                // REferenciador Externo
+                $referenciador = $ClientesModel->getReferenciador($cliente->Id);
+
+                $data['nombresRef'] = $referenciador->Nombres;
+                $data['apellidosRef'] = $referenciador->Apellidos;
+                $data['emailRef'] = $referenciador->Email;
+                $data['telRef'] = $referenciador->Telefono;
+    
+            } else if ($cliente->idComoSeEntero == '12') {
+                // REferenciado por Cliente
+                $clienteRef = $ClientesModel->getClienteReferenciador($cliente->Id);
+                $data['idClienteRef'] = $clienteRef;
+            }
         }
 
         // Cargar las vistas
@@ -143,14 +201,21 @@ class Clientes extends CI_Controller {
 
     public function postData($id)
     {
-
         if ($id == 0)
         {
             $this->insertarNuevoCliente();
         } 
         else 
         {
-            $this->actualizarCita($id);
+            $this->actualizarCliente($id);
         }
+    }
+
+    public function actualizarCliente($id) 
+    {
+        $ClientesModel = new ClientesModel;
+        $ClientesModel->actualizarCliente($id);
+        //redirect(base_url('index.php/clientes/index'));
+        echo "Done";
     }
 }
