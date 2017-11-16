@@ -69,7 +69,7 @@
                                     <div class="form-group">
                                         <label>Estado</label>
                                         <select name="estado" id="estados_select">
-                                            <option value="">Selecciona una opción</option>
+                                            <option value="0">Selecciona una opción</option>
                                             <? foreach ($Estados as $e) { ?>      
                                                 <option value="<? echo $e->id ?>"><? echo $e->nombre?></option>      
                                             <? }?>
@@ -78,8 +78,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Municipio o ciudad</label>
-                                        <select name="idMunicipio" id="municipios_select" disabled>
-                                            <option value="">No se ha seleccionado estado</option>
+                                        <select name="idMunicipio" id="municipios_select">
                                         </select> </div>
                                 </div>
                             </div>
@@ -93,14 +92,14 @@
                                     <div class="form-group">
                                     <label>Teléfono de de casa</label>
                                     <input type="text" placeholder="" data-mask="(999) 999-9999" 
-                                        class="form-control" name="telCasa">
+                                        class="form-control" name="telCasa" value="<? echo $telCasa ?>">
                                     <span class="font-13 text-muted">(999) 999-9999</span> </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="control-label">Teléfono de oficina</label>
                                         <input type="text" placeholder="" data-mask="(999) 999-9999" 
-                                            class="form-control" name="telOfi">
+                                            class="form-control" name="telOfi" value="<? echo $telOfi ?>">
                                         <span class="font-13 text-muted">(999) 999-9999</span></div>
                                 </div>
                             </div>
@@ -110,7 +109,7 @@
                                     <div class="form-group">
                                         <label class="control-label">Teléfono celular</label>
                                         <input type="text" placeholder="" data-mask="(999) 999-9999" 
-                                            class="form-control" name="telCel">
+                                            class="form-control" name="telCel" value="<? echo $telCel ?>">
                                         <span class="font-13 text-muted">(999) 999-9999</span></div>
                                 </div>
                                 <div class="col-md-6">
@@ -128,7 +127,7 @@
                             <div class="form-group">
                                 <label>¿Cómo se enteró?</label>
                                 <select name="idComoSeEntero" id="entero_select">
-                                    <option value="">Selecciona una opción</option>
+                                    <option value="0">Selecciona una opción</option>
                                     <? foreach ($ComoSeEntero as $e) { ?>      
                                         <option value="<? echo $e->id ?>"><? echo $e->Descripcion?></option>      
                                     <? }?>
@@ -138,9 +137,9 @@
                                 <div class="form-group">
                                 <label>Cliente que referenció</label>
                                 <select name="clienteReferenciador">
-                                    <option value="">Selecciona una opción</option>
+                                    <option value="0">Selecciona una opción</option>
                                     <? foreach ($Clientes as $c) { ?>      
-                                        <option value="<? echo $c->id ?>"><? echo $c->Nombres . " " . $c->Apellidos?></option>      
+                                        <option value="<? echo $c->Id ?>"><? echo $c->Nombres . " " . $c->Apellidos?></option>      
                                     <? }?>
                                 </select> </div>
                             </div>
@@ -148,10 +147,9 @@
                             <div id="refExtDiv">
 
                                 <div class="form-group">
-                                    <label for="nom">Nombre(s)</label>
+                                    <label>Nombre(s)</label>
                                     <input type="text" class="form-control form-control-line" 
-                                        value="<? echo $nombresRef ?>" name="nombresRef"
-                                        id="nom"> </div>
+                                        value="<? echo $nombresRef ?>" name="nombresRef"> </div>
                             
                                 <div class="form-group">
                                     <label>Apellidos</label>
@@ -159,17 +157,23 @@
                                         value="<? echo $apellidosRef ?>" name="apellidosRef"> </div>
 
                                 <div class="form-group">
-                                    <label for="email">Email</label>
-                                    <input type="email" id="email" name="emailRef" class="form-control" 
+                                    <label>Teléfono</label>
+                                    <input type="text" placeholder="" data-mask="(999) 999-9999" 
+                                        class="form-control" name="telRef">
+                                    <span class="font-13 text-muted">(999) 999-9999</span> </div>
+
+                                <div class="form-group">
+                                    <label>Email</label>
+                                    <input type="email" name="emailRef" class="form-control" 
                                         placeholder="ejemplo@gmail.com" value="<? echo $emailRef ?>"> </div>
-                            
                             </div>
 
                             <div class="form-group">
                                 <label>¿Hizo el recorrido?</label><br>
                                 <div class="switch">
                                     <label>NO
-                                    <input type="checkbox" name="hizoRecorrido" checked><span class="lever"></span>SI</label> </div>
+                                    <input type="checkbox" name="hizoRecorrido" value="<? echo $hizoRecorrido ?>"><span 
+                                        class="lever"></span>SI</label> </div>
                                 </div>
 
                             <button type="submit" class="btn btn-info">Submit</button>

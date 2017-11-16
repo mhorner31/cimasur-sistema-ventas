@@ -46,6 +46,10 @@ class Clientes extends CI_Controller {
             $data['direccion'] = "";
             $data['colonia'] = "";
             $data['email'] = "";
+            $data['telCel'] = '';
+            $data['telCasa'] = '';
+            $data['telOfi'] = '';
+            $data['hizoRecorrido'] = 0;
 
             $data['nombresRef'] = "";
             $data['apellidosRef'] = "";
@@ -80,9 +84,9 @@ class Clientes extends CI_Controller {
     public function insertarNuevoCliente() 
     {
         if ($this->validateData()) {
-            /*$ClientesModel = new ClientesModel;
+            $ClientesModel = new ClientesModel;
             $ClientesModel->insertarCliente(1);
-            redirect(base_url('index.php/Clientes/index'));*/
+            //redirect(base_url('index.php/Clientes/index'));
             echo "Done";
         } else {
             echo validation_errors();;
@@ -102,10 +106,39 @@ class Clientes extends CI_Controller {
             'direccion', 'Direccion', 'trim|required');
         $this->form_validation->set_rules(
             'colonia', 'Colonia', 'trim|required');
-        /*$this->form_validation->set_rules(
-            'email', 'Email', 'trim|required|valid_email');*/
+        $this->form_validation->set_rules(
+            'email', 'Email', 'trim|valid_email');
+        $this->form_validation->set_rules(
+            'telCel', 'Telefono Celular', 'trim|required');
+        $this->form_validation->set_rules(
+            'idComoSeEntero', 'ComoSeEntero', 'callback_dropdown_check');
+
+        if ($this->input->post('idComoSeEntero') == '13') {
+            
+            $this->form_validation->set_rules(
+                'nombresRef', 'Nombres Ref', 'trim|required');
+            $this->form_validation->set_rules(
+                'apellidosRef', 'Apellidos Ref', 'trim|required');
+            $this->form_validation->set_rules(
+                'emailRef', 'Email Ref', 'trim|valid_email');
+
+        } else if ($this->input->post('idComoSeEntero') == '12') {
+
+            $this->form_validation->set_rules(
+                'clienteReferenciador', 'Cliente referenciador', 'callback_dropdown_check');
+        }
             
         return $this->form_validation->run();
+    }
+
+    public function dropdown_check($str) {
+        // 0 si no se ha hecho una seleccion
+        if ($str == '0') {
+            $this->form_validation->set_message('dropdown_check', 
+                'The {field} field was not selected a value.');
+            return FALSE;
+        }
+        return TRUE;
     }
 
     public function postData($id)

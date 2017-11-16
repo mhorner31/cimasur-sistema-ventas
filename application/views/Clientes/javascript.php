@@ -1,9 +1,17 @@
 <script type="text/javascript">
     $(document).ready(function() {
 
-        // Tiene que estar oculta al principio
-        $("#refClienteDiv").hide();
-        $("#refExtDiv").hide();
+        // Si no hay un estado seleccionado, 
+        // entonces deshabilita el selector de municipios
+        if($("#estados_select").val() == 0) {
+            $('#municipios_select').prop('disabled', true);
+            $("#municipios_select").html('<option value="0">No se ha seleccionado estado</option>'); 
+        } else {
+            $('#municipios_select').prop('disabled', false);
+        }
+
+        // Ver si se tienen o no que mostrar los referidos
+        onComoSeEnteroChanged();
 
         // Cuando se seleccione un estado
         $("#estados_select").change(onEstadosChange);
@@ -16,20 +24,26 @@
          */
         function onEstadosChange() {
             id = $("#estados_select").val();
-            url = "<?php echo base_url('index.php/Clientes/municipiosPorEstado'); ?>/" + id;
 
-            $.getJSON(url)
-                .done(function(data) {
-                    var items="";
-                    $.each(data, function(index, item) {
-                        items += "<option value='" + item.id + "'>" + item.nombre + "</option>";
+            if(id != 0) {
+                url = "<?php echo base_url('index.php/Clientes/municipiosPorEstado'); ?>/" + id;
+
+                $.getJSON(url)
+                    .done(function(data) {
+                        var items="";
+                        $.each(data, function(index, item) {
+                            items += "<option value='" + item.id + "'>" + item.nombre + "</option>";
+                        });
+                        $('#municipios_select').prop('disabled', false);
+                        $("#municipios_select").html(items); 
+                    })
+                    .fail(function(error) {
+                        console.log('error: ', error);
                     });
-                    $('#municipios_select').prop('disabled', false);
-                    $("#municipios_select").html(items); 
-                })
-                .fail(function(error) {
-                    console.log('error: ', error);
-                });
+            } else {
+                $('#municipios_select').prop('disabled', true);
+                $("#municipios_select").html('<option value="0">No se ha seleccionado estado</option>'); 
+            }
         }
 
         /**
