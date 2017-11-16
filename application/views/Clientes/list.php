@@ -38,29 +38,26 @@
                             <thead>
                                 <tr>
                                 <th>Cliente</th>
-                                <th>Ciudad</th>
-                                <th>Estado</th>
                                 <th>Email</th>
                                 <th>Como se Entero</th>
                                 <th>Fecha</th>
                                 <th>Recorrido</th>
+                                <th>Borrar</th>
                                 </tr>
                             </thead>
                             <tbody>                            
                                 <? foreach($clientes as $d) { ?>
                                     <tr>
-                                        <th><?echo $d->Nombres . " " . $d->Apellidos?></th>
-                                        <th><?echo $d->Ciudad?></th>
-                                        <th><?echo $d->Estado?></th>
+                                        <th  href="<?php echo base_url('index.php/clientes/update/'.$d->id);?>"><?echo $d->Nombres . " " . $d->Apellidos?></th>
                                         <th><?echo $d->Email?></th>
                                         <th><?echo $d->Enterado?></th>
                                         <th><?echo $d->FechaIngreso?></th>
                                         <th><?echo $d->HizoRecorrido?></th>
                                         <th>
-                                            <form method="POST" action="<?php echo base_url('index.php/clientes/update/'.$d->id);?>">
-                                                <button type="submit" class="btn btn-danger btn-xs">Actualizar</button>
-                                            </form>
-                                        </th>
+                                        <button type="button" class="btn waves-effect waves-light btn-secondary">
+                                            <a href="<?php echo base_url('index.php/clientes/delete/'.$d->id) ?>">Eliminar</a>
+                                        </button>
+                                    </th>
                                     </tr>
                                 <?}?>
                             </tbody>                            

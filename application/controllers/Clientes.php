@@ -20,7 +20,7 @@ class Clientes extends CI_Controller {
         $this->load->helper('html');
 
         $clientesModel = new ClientesModel;
-        $data['clientes'] = $clientesModel->getClientes();
+        $data['clientes'] = $clientesModel->getListaClientes();
 
         $this->load->view('Plantilla/header_app');
         $this->load->view('Plantilla/topbar_app');
@@ -143,6 +143,7 @@ class Clientes extends CI_Controller {
 
     public function postData($id)
     {
+
         if ($id == 0)
         {
             $this->insertarNuevoCliente();

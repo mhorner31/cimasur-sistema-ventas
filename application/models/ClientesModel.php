@@ -237,4 +237,14 @@ class ClientesModel extends CI_Model {
         $this->db->where('idCita', $id);
         $this->db->update('InmuebleCliente', $inmuebleData);
     }
+
+
+    public function getListaClientes()
+    {
+        $sql = "SELECT c.id, c.Nombres, c.Apellidos, c.Email, c.FechaIngreso, c.HizoRecorrido, e.Descripcion as Enterado
+        FROM Cliente c
+        INNER JOIN ComoSeEntero e ON c.idComoSeEntero = e.id";
+        $query = $this->db->query($sql);
+        return $query->result(); 
+    }
 }
