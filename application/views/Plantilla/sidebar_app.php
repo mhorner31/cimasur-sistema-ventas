@@ -7,7 +7,7 @@
                 <!-- Sidebar navigation-->
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
-                        <li class="user-profile"> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-account-circle"></i><span class="hide-menu"> Usuario Sistema</span></a>
+                        <li class="user-profile"> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-account-circle"></i><span class="hide-menu"> <?echo $nickname?></span></a>
                             <ul aria-expanded="false" class="collapse">
                                 <li><a href="javascript:void()">Mi Perfil </a></li>
                                 <li><a href="javascript:void()">Cambiar Contraseña</a></li>

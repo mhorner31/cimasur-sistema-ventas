@@ -14,6 +14,7 @@
                     <div class="card">
                         <div class="card-body">
                             Pagina en construcción
+                            <?php echo $nickname ?>
                         </div>
                     </div>
                 </div>
