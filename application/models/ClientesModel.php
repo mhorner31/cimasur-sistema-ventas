@@ -38,7 +38,10 @@ class ClientesModel extends CI_Model {
      */
     public function getClientes() 
     {
-        $query = $this->db->get("Cliente");
+        $sql = "SELECT c.id, c.Nombres, c.Apellidos, c.Ciudad, c.Estado, c.Email, c.FechaIngreso, c.HizoRecorrido, e.Descripcion as Enterado
+                FROM Cliente c
+                INNER JOIN ComoSeEntero e ON c.idComoSeEntero = e.id";
+        $query = $this->db->query($sql);
         return $query->result(); 
     }
 

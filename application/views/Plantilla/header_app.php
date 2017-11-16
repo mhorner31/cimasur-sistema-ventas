@@ -27,8 +27,6 @@
     <?php echo link_tag('assets/plugins/toast-master/css/jquery.toast.css'); ?>
     <!-- Custom CSS -->
     <?php echo link_tag('css/style.css'); ?>
-    <!-- Dashboard 1 Page CSS -->
-    <?php echo link_tag('css/pages/dashboard1.css'); ?>
     <!-- You can change the theme colors from here -->
     <?php echo link_tag('css/colors/red-dark.css'); ?>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

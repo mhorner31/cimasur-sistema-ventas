@@ -14,9 +14,9 @@
                 <div class="card-body">
                     <h4 class="card-title">Inmuebles</h4>
                     <h6 class="card-subtitle">Exportar los inmuebles a Excel, PDF o Imprmirlos.</h6>
-                    <button type="button" class="btn waves-effect waves-light btn-secondary">
+                    <div type="button" class="btn waves-effect waves-light btn-secondary">
                         <a href="<?php echo base_url('index.php/inmuebles/update/') ?>">Agregar Inmueble</a>
-                    </button>
+                    </div>
                     <div class="table-responsive m-t-40">
                         <table id="table" class="display wrap table table-hover table-striped table-bordered" 
                             cellspacing="0" width="97%">

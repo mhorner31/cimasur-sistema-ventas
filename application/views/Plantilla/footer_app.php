@@ -42,8 +42,6 @@
     <script src="<?php echo base_url();?>assets/plugins/c3-master/c3.min.js"></script>
     <!-- Popup message jquery -->
     <script src="<?php echo base_url();?>assets/plugins/toast-master/js/jquery.toast.js"></script>
-    <!-- Chart JS -->
-    <script src="<?php echo base_url();?>js/dashboard1.js"></script>
     <!-- ============================================================== -->
     <!-- Style switcher -->
     <!-- ============================================================== -->
