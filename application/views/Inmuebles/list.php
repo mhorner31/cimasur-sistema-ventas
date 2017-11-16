@@ -39,9 +39,9 @@
                                     <th><?echo $d->Precio?></th>
                                     <th><?echo $d->Descripcion;?></th>
                                     <th>
-                                        <button type="button" class="btn waves-effect waves-light btn-secondary">
-                                            <a href="<?php echo base_url('index.php/inmuebles/delete/'.$d->id) ?>">Eliminar</a>
-                                        </button>
+                                        <a class="btn waves-effect waves-light btn-secondary" onclick="if (confirm('¿Desea elimiar la selección?')) { location.href = '<?php echo base_url('index.php/inmuebles/delete/'.$d->id) ?>'; } return false;">
+                                            Eliminar
+                                        </a>
                                     </th>
                                 </tr>
                             <?}?>

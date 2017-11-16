@@ -47,14 +47,14 @@
                             <tbody>                            
                                 <? foreach($Citas as $d) { ?>
                                     <tr>
-                                        <th><?echo $d->Nombres . " " . $d->Apellidos?></th>
+                                        <th><a href="<?php echo base_url('index.php/citas/update/'.$d->id);?>"><?echo $d->Nombres . " " . $d->Apellidos?></a></th>
                                         <th><?echo $d->NoCita?></th>
                                         <th><?echo $d->Interesado?></th>
-                                        <th><?echo $d->Fecha?></th>
+                                        <th><?echo $d->Fecha?></th>                                        
                                         <th>
-                                            <form method="POST" action="<?php echo base_url('index.php/citas/update/'.$d->id);?>">
-                                                <button type="submit" class="btn btn-danger btn-xs">Actualizar</button>
-                                            </form>
+                                            <a class="btn waves-effect waves-light btn-secondary" onclick="if (confirm('¿Desea elimiar la seleccion?')) { location.href = '<?php echo base_url('index.php/citas/delete/'.$d->id) ?>'; } return false;">
+                                                Eliminar
+                                            </a>
                                         </th>
                                     </tr>
                                 <?}?>

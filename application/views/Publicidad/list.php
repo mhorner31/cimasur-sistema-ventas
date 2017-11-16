@@ -31,9 +31,9 @@
                                 <tr>
                                     <th><a href="<?php echo base_url('index.php/publicidad/update/'.$d->id);?>"><?echo $d->Descripcion;?> </a></th>
                                     <th>
-                                        <button type="button" class="btn waves-effect waves-light btn-secondary">
-                                            <a href="<?php echo base_url('index.php/publicidad/delete/'.$d->id) ?>">Eliminar</a>
-                                        </button>
+                                        <a class="btn waves-effect waves-light btn-secondary" onclick="if (confirm('¿Desea elimiar la selección?')) { location.href = '<?php echo base_url('index.php/publicidad/delete/'.$d->id) ?>'; } return false;">
+                                            Eliminar
+                                        </a>
                                     </th>
                                 </tr>
                             <?}?>

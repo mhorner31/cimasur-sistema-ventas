@@ -88,4 +88,15 @@ class Citas extends CI_Controller {
         $citasModel->actualizarCita($id);
         redirect(base_url('index.php/citas/index'));
     }
+
+
+    public function delete($id)
+    {
+       $this->load->helper('url');
+       $this->load->helper('html');
+       
+       $this->db->where('id', $id);
+       $this->db->delete('Cita');
+       redirect(base_url('/index.php/citas/'));
+   }
 }
