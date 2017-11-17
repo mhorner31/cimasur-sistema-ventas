@@ -149,10 +149,9 @@ class Clientes extends CI_Controller {
         if ($this->validateData()) {
             $ClientesModel = new ClientesModel;
             $ClientesModel->insertarCliente(1);
-            //redirect(base_url('index.php/Clientes/index'));
-            echo "Done";
+            redirect(base_url('index.php/Clientes/index'));
         } else {
-            echo validation_errors();;
+            //echo validation_errors();;
         }
     }
 
@@ -220,8 +219,7 @@ class Clientes extends CI_Controller {
     {
         $ClientesModel = new ClientesModel;
         $ClientesModel->actualizarCliente($id);
-        //redirect(base_url('index.php/clientes/index'));
-        echo "Done";
+        redirect(base_url('index.php/clientes/index'));
     }
 
     public function eliminarCliemte($id) {
