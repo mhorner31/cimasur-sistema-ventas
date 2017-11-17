@@ -18,6 +18,11 @@ class Citas extends CI_Controller {
     {
         $this->load->helper('url');
         $this->load->helper('html');
+        $this->load->library('session');
+        
+        if(!$this->session->userdata('logged_in')){
+            redirect('login');
+        } 
 
         $citasModel = new CitasModel;
         $data['Citas'] = $citasModel->getCitas();
@@ -31,6 +36,14 @@ class Citas extends CI_Controller {
 
     public function update($id = NULL) 
     {
+        $this->load->helper('url');
+        $this->load->helper('html');
+        $this->load->library('session');
+        
+        if(!$this->session->userdata('logged_in')){
+            redirect('login');
+        } 
+        
         $citasModel = new CitasModel;
         $data['Clientes'] = $citasModel->getClientesPorVendedor(1);
         $data['Inmuebles'] = $citasModel->getInmuebles();

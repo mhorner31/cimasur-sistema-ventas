@@ -2,14 +2,14 @@
     exit('No direct script access allowed');
 }
  
-class Inmuebles extends CI_Controller
+class Usuarios extends CI_Controller
 {
 
     public function __construct()
     {
       //load database in autoload libraries
         parent::__construct();
-        $this->load->model('InmueblesModel');
+        $this->load->model('UsuariosModel');
     }
 
 
@@ -23,15 +23,15 @@ class Inmuebles extends CI_Controller
             redirect('login');
         }   
 
-        $inmuebles=new InmueblesModel;
-        $data['data']=$inmuebles->getInmuebles();
+        $usuarios=new UsuariosModel;
+        $data['data']=$usuarios->getUsuarios();
 
         
 
         $this->load->view('Plantilla/header_app');
         $this->load->view('Plantilla/topbar_app');
         $this->load->view('Plantilla/sidebar_app');
-        $this->load->view('Inmuebles/list', $data);
+        $this->load->view('Usuarios/list', $data);
         $this->load->view('Plantilla/footer_app');
     }
 
@@ -49,7 +49,7 @@ class Inmuebles extends CI_Controller
         $this->load->view('Plantilla/topbar_app');
         $this->load->view('Plantilla/sidebar_app');
 
-        $inmuebles=new InmueblesModel;
+        $inmuebles=new UsuariosModel;
         $data['inmuebles']=$inmuebles->getInmuebles($id);
         $data['tipoInmueble']=$inmuebles->getTipoInmueble();
         $data['dispInmueble']=$inmuebles->getDisponibilidadInmueble();
@@ -108,7 +108,7 @@ class Inmuebles extends CI_Controller
        $this->load->helper('url');
        $this->load->helper('html');
 
-       $inmuebles=new InmueblesModel;
+       $inmuebles=new UsuariosModel;
        $inmuebles->insertItem();
        redirect(base_url('/index.php/inmuebles/'));
     }
@@ -119,7 +119,7 @@ class Inmuebles extends CI_Controller
         $this->load->helper('url');
         $this->load->helper('html');
         
-        $inmuebles=new InmueblesModel;
+        $inmuebles=new UsuariosModel;
         $inmuebles->udpateItem($id);
         redirect(base_url('/index.php/inmuebles/'));
     }
