@@ -181,7 +181,7 @@
                                         class="lever"></span>SI</label> </div>
                                 </div>
 
-                            <button type="submit" class="btn btn-info">Submit</button>
+                            <button type="submit" class="btn btn-info"><? echo $operacion ?></button>
                         </div>
                     </form>
                 </div>

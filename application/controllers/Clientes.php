@@ -39,6 +39,8 @@ class Clientes extends CI_Controller {
 
         if ($id == NULL) {
 
+            $data['operacion'] = 'Agregar Cliente';
+
             // Settear los valores de default
             $data['idCliente'] = 0;
             $data['nombres'] = "";
@@ -49,6 +51,7 @@ class Clientes extends CI_Controller {
             $data['telCel'] = '';
             $data['telCasa'] = '';
             $data['telOfi'] = '';
+            $data['telRef'] = '';
             $data['hizoRecorrido'] = 0;
             $data['idComoSeEntero'] = 0;
 
@@ -57,6 +60,8 @@ class Clientes extends CI_Controller {
             $data['emailRef'] = "";
 
         } else {
+            $data['operacion'] = 'Actualizar Cliente';
+
             // Obtener el cliente a actualizar
             $cliente = $ClientesModel->getCliente($id);
 
