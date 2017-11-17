@@ -19,10 +19,16 @@
         // Cuando cambie como se entero
         $("#entero_select").change(onComoSeEnteroChanged);
 
+        // Seleccionar un estado y municipio si se esta actaulizando un record
+        if($("#idCliente").text() != '0') {
+            $('[name=estado]').val( $("#idEstado").text() );
+            onEstadosChange($("#idMunicipio").text());
+        }
+
         /**
          * Metodo para actualizar la lista de municipios
          */
-        function onEstadosChange() {
+        function onEstadosChange(idMuni) {
             id = $("#estados_select").val();
 
             if(id != 0) {
@@ -32,7 +38,11 @@
                     .done(function(data) {
                         var items="";
                         $.each(data, function(index, item) {
-                            items += "<option value='" + item.id + "'>" + item.nombre + "</option>";
+                            selectedValue = "";
+                            if(idMuni && idMuni == item.id) {
+                                selectedValue = " selected "
+                            }
+                            items += "<option value='" + item.id + "' " + selectedValue + " >" + item.nombre + "</option>";
                         });
                         $('#municipios_select').prop('disabled', false);
                         $("#municipios_select").html(items); 

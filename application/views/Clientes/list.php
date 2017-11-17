@@ -54,7 +54,7 @@
                                         <th><?echo $d->FechaIngreso?></th>
                                         <th><?echo $d->HizoRecorrido?></th>
                                         <th>
-                                            <a class="btn waves-effect waves-light btn-secondary" onclick="if (confirm('¿Desea elimiar la seleccion?')) { location.href = '<?php echo base_url('index.php/clientes/delete/'.$d->id) ?>'; } return false;">
+                                            <a class="btn waves-effect waves-light btn-secondary" onclick="if (confirm('¿Desea elimiar la seleccion?')) { location.href = '<?php echo base_url('index.php/clientes/eliminarCliemte/'.$d->id) ?>'; } return false;">
                                                 Eliminar
                                             </a>
                                         </th>
