@@ -50,6 +50,7 @@ class Clientes extends CI_Controller {
             $data['telCasa'] = '';
             $data['telOfi'] = '';
             $data['hizoRecorrido'] = 0;
+            $data['idComoSeEntero'] = 0;
 
             $data['nombresRef'] = "";
             $data['apellidosRef'] = "";
