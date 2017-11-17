@@ -7,14 +7,15 @@
                 <!-- Sidebar navigation-->
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
-                        <li class="user-profile"> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-account-circle"></i><span class="hide-menu"> <?echo $nickname?></span></a>
+                        <li class="user-profile"> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-account-circle"></i><span class="hide-menu"> <?echo $this->session->userdata('nickname');?></span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="javascript:void()">Mi Perfil </a></li>
-                                <li><a href="javascript:void()">Cambiar Contraseña</a></li>
+                                <li><a href="<?php echo base_url();?>index.php/usuarios/perfil">Mi Perfil </a></li>
+                                <li><a href="<?php echo base_url();?>index.php/usuarios/password">Cambiar Contraseña</a></li>
                                 <li><a href="<?php echo base_url();?>index.php/login/cerrarSesion">Cerrar Sesión</a></li>
                             </ul>
                         </li>
                         <li class="nav-devider"></li>
+                        <? if ($this->session->userdata('tipo') != 1) { ?>
                         <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Principal</span></a>
                             <ul aria-expanded="false" class="collapse">
                                 <li><a href="<?php echo base_url();?>index.php/clientes">Clientes </a></li>
@@ -22,6 +23,8 @@
                                 <li><a href="<?php echo base_url();?>index.php/usuarios">Vendedores</a></li>
                             </ul>
                         </li>
+                        <? }?>
+                        <? if ($this->session->userdata('tipo') == 1 || $this->session->userdata('tipo') == 4) { ?>
                         <li class="nav-small-cap">ADMINISTRADOR</li>
                         <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-laptop-chromebook"></i><span class="hide-menu">Sistema</span></a>
                             <ul aria-expanded="false" class="collapse">
@@ -33,6 +36,12 @@
                                 <li><a href="app-ticket.html">Base de Datos</a></li>
                             </ul>
                         </li>
+                        <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-file-chart"></i><span class="hide-menu">Usuarios</span></a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li><a href="<?php echo base_url();?>index.php/usuarios">Lista de Usuarios</a></li>
+                                <li><a href="<?php echo base_url();?>index.php/usuarios/update">Agregar Usuarios</a></li>
+                            </ul>
+                        </li>
                         <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-file-chart"></i><span class="hide-menu">Medios de Publicidad</span></a>
                             <ul aria-expanded="false" class="collapse">
                                 <li><a href="<?php echo base_url();?>index.php/publicidad">Lista de Medios</a></li>
@@ -40,6 +49,7 @@
                             </ul>
                         </li>
                         <li class="nav-small-cap">VENDEDORES</li>
+                        <? }?>
                         <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-file"></i><span class="hide-menu">Clientes</span></a>
                             <ul aria-expanded="false" class="collapse">
                                 <li><a href="<?php echo base_url();?>index.php/clientes">Lista de Clientes</a></li>
@@ -54,8 +64,10 @@
                         </li>
                         <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-home-variant"></i><span class="hide-menu">Inmuebles</span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="<?php echo base_url();?>index.php/inmuebles">Catálogo</a></li>
-                                <li><a href="<?php echo base_url();?>index.php/inmuebles/update">Agregar Inmueble ADMON</a></li>
+                                <li><a href="<?php echo base_url();?>index.php/inmuebles">Lista de Inmuebles</a></li>
+                                <? if ($this->session->userdata('tipo') != 3 ) { ?>
+                                <li><a href="<?php echo base_url();?>index.php/inmuebles/update">Agregar Inmueble</a></li>
+                                <? }?>
                             </ul>
                         </li>
                         <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-book-open-variant"></i><span class="hide-menu">Guia de Usuario</span></a>

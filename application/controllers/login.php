@@ -53,6 +53,8 @@ class Login extends CI_Controller {
                 $result = $this->LoginAppModel->informacion_usuario($nickname);
                 if ($result != false) {
                     $session_data = array(
+                        'logged_in'=> TRUE,
+                        'id' =>$result[0]->id,
                         'nickname' => $result[0]->nickname,
                         'tipo' => $result[0]->idTipoUsuario,
                         'nombre' => $result[0]->Nombre,
@@ -73,8 +75,9 @@ class Login extends CI_Controller {
     }
 
     public function cerrarSesion(){
-        $sess_array = array('nickname' => '');
+        $sess_array = array('logged_in' => '');
         $this->session->unset_userdata($sess_array);
+        $this->session->sess_destroy();
         $data['mensajeLogin'] = 'Session terminada correctamente';
         $this->load->view('login_app', $data);
     }

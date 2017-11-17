@@ -8,44 +8,22 @@ class Construccion extends CI_Controller {
         $this->load->helper('html');
 
 
-        //$data['nickname']=$this->session->userdata('nickname');
-        //$data['tipo']=$this->session->userdata('tipo');
-        //$data['nombre']=$this->session->userdata('nombre');
-        //$data['apellidos']=$this->session->userdata('apellidos');
-        $data['session_info']= getSessionData();
+        $this->load->library('session');
+        
+        if(!$this->session->userdata('logged_in')){
+            redirect('login');
+        }   
 
-       // $data['first_name'] = $this->session->userdata('first_name');
+        $data['id']=$this->session->userdata('id');
+        $data['nickname']=$this->session->userdata('nickname');
+        $data['tipo']=$this->session->userdata('tipo');
+        $data['nombre']=$this->session->userdata('nombre');
+        $data['apellidos']=$this->session->userdata('apellidos');
 
         $this->load->view('Plantilla/header_app');
         $this->load->view('Plantilla/topbar_app');
-        $this->load->view('Plantilla/sidebar_app', $data);
+        $this->load->view('Plantilla/sidebar_app');
         $this->load->view('Plantilla/construccion_app', $data);
         $this->load->view('Plantilla/footer_app');
-    }
-
-    public function checkSession(){
-        $this->load->helper('url');
-
-        $this->load->library('session');
-
-        if(!$this->session->userdata('nickname')){
-            redirect('login');
-        }   
-    }
-
-    public function getSessionData(){
-        $session_info;
-
-        if($this->session->userdata('nickname')){
-            $session_info = array(
-                'nickname' => $this->session->userdata('nickname'),
-                'tipo' => $this->session->userdata('tipo'),
-                'nombre' => $this->session->userdata('nombre'),
-                'apellidos' => $this->session->userdata('apellidos'),
-                'email' => $this->session->userdata('email'),
-                );
-        }
-
-        return $session_info;
     }
 }
