@@ -20,7 +20,9 @@
                             <ul aria-expanded="false" class="collapse">
                                 <li><a href="<?php echo base_url();?>index.php/clientes">Clientes </a></li>
                                 <li><a href="<?php echo base_url();?>index.php/inmuebles">Inmuebles</a></li>
+                                <? if ($this->session->userdata('tipo') != 3 ) { ?>
                                 <li><a href="<?php echo base_url();?>index.php/usuarios">Vendedores</a></li>
+                                <? }?>
                             </ul>
                         </li>
                         <? }?>
@@ -36,7 +38,7 @@
                                 <li><a href="app-ticket.html">Base de Datos</a></li>
                             </ul>
                         </li>
-                        <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-file-chart"></i><span class="hide-menu">Usuarios</span></a>
+                        <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-account-multiple"></i><span class="hide-menu">Usuarios</span></a>
                             <ul aria-expanded="false" class="collapse">
                                 <li><a href="<?php echo base_url();?>index.php/usuarios">Lista de Usuarios</a></li>
                                 <li><a href="<?php echo base_url();?>index.php/usuarios/update">Agregar Usuarios</a></li>

@@ -41,11 +41,11 @@ class UsuariosModel extends CI_Model
         $data = array(
             'idTipoUsuario' => $this->input->post('tipo'),
             'nickname' => $this->input->post('nickname'),
-            'password' => $this->input->post('password'),
+            'password' => md5($this->input->post('password')),
             'Nombre' => $this->input->post('nombre'),
             'Apellidos' => $this->input->post('apellidos'),
             'email' => $this->input->post('email'),
-            'StatusId' => $this->input->post('status')
+            'StatusId' => $this->input->post('estatus')
         );
 
         return $this->db->insert('Usuario', $data);
@@ -53,15 +53,29 @@ class UsuariosModel extends CI_Model
 
     public function actualizarUsuario($id) 
     {
-        $data = array(
-            'idTipoUsuario' => $this->input->post('tipo'),
-            'nickname' => $this->input->post('nickname'),
-            'password' => $this->input->post('password'),
-            'Nombre' => $this->input->post('nombre'),
-            'Apellidos' => $this->input->post('apellidos'),
-            'email' => $this->input->post('email'),
-            'StatusId' => $this->input->post('status')
-        );
+        $data = "";
+
+        if ($this->input->post('password') != ""){
+            $data = array(
+                'idTipoUsuario' => $this->input->post('tipo'),
+                'nickname' => $this->input->post('nickname'),
+                'password' => md5($this->input->post('password')),
+                'Nombre' => $this->input->post('nombre'),
+                'Apellidos' => $this->input->post('apellidos'),
+                'email' => $this->input->post('email'),
+                'StatusId' => $this->input->post('estatus')
+            );
+        } else{
+            $data = array(
+                'idTipoUsuario' => $this->input->post('tipo'),
+                'nickname' => $this->input->post('nickname'),
+                'Nombre' => $this->input->post('nombre'),
+                'Apellidos' => $this->input->post('apellidos'),
+                'email' => $this->input->post('email'),
+                'StatusId' => $this->input->post('estatus')
+            );
+        }
+
         $this->db->where('id', $id);        
         $this->db->update('Usuario', $data);
     }
