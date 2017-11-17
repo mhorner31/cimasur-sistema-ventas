@@ -209,18 +209,22 @@ class ClientesModel extends CI_Model {
         $this->db->where("idClienteDe", $idCliente);
         $q = $this->db->get('ClienteReferenciador');
         $data = $q->result_array();
-        $idRef = $data[0]['idReferenciador'];
 
-        $query = $this->db->query(
-            "SELECT * FROM Referenciador WHERE id = ?", 
-            array($idRef));
-
-        return $query->row();
+        if(!empty($data)) 
+        {
+            $idRef = $data[0]['idReferenciador'];
+            $query = $this->db->query(
+                "SELECT * FROM Referenciador WHERE id = ?", 
+                array($idRef));
+    
+            return $query->row();
+        }
+        return NULL; 
     }
 
     public function actualizarCliente($idCliente)
     {    
-        //Eliminar 
+        // Eliminar 
         //  - telefonos
         //  - referenciados
         // para que sean agregados nuevamente
@@ -228,10 +232,11 @@ class ClientesModel extends CI_Model {
         $this ->db-> delete('Telefono');
 
         $referenciador = $this->getReferenciador($idCliente);
-        if (isset($referenciador)) {
-            $this ->db-> where('idClienteDe', $idCliente);
-            $this ->db-> delete('ClienteReferenciador');
 
+        $this ->db-> where('idClienteDe', $idCliente);
+        $this ->db-> delete('ClienteReferenciador');
+
+        if ($referenciador != NULL && isset($referenciador)) {
             $this ->db-> where('id', $referenciador->id);
             $this ->db-> delete('Referenciador');
         }
@@ -322,5 +327,30 @@ class ClientesModel extends CI_Model {
             );
             $this->db->insert('ClienteReferenciador', $clienteRefData);
         }
+    }
+
+    public function eliminarCliemte($idCliente) {
+        //Eliminar 
+        //  - telefonos
+        //  - referenciados
+        // para que sean agregados nuevamente
+        $this ->db-> where('idCliente', $idCliente);
+        $this ->db-> delete('Telefono');
+        
+        $referenciador = $this->getReferenciador($idCliente);
+
+        // Eliminar los registros en la tabla 
+        $this ->db-> where('idClienteDe', $idCliente);
+        $this ->db-> delete('ClienteReferenciador');
+
+        // Eliminar si tiene un referenciador
+        if (isset($referenciador)) {
+            $this ->db-> where('id', $referenciador->id);
+            $this ->db-> delete('Referenciador');
+        }
+
+        // Eliminar ahora el cliente
+        $this ->db-> where('id', $idCliente);
+        $this ->db-> delete('Cliente');
     }
 }

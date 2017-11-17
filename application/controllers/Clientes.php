@@ -217,4 +217,10 @@ class Clientes extends CI_Controller {
         //redirect(base_url('index.php/clientes/index'));
         echo "Done";
     }
+
+    public function eliminarCliemte($id) {
+        $ClientesModel = new ClientesModel;
+        $ClientesModel->eliminarCliemte($id);
+        redirect(base_url('index.php/clientes/index'));
+    }
 }
