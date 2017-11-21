@@ -32,30 +32,34 @@
                     <form class="form-material m-t-40" method="post" action="<?php echo base_url('index.php/citas/postData/'.$IdCita);?>">
                         <div class="form-group">
                             <label>Cliente</label>
-                            <select name="idCliente">
+                            <select name="idCliente" required>
                                 <? foreach ($Clientes as $c) { ?>      
                                     <option value="<? echo $c->Id ?>"><? echo $c->Nombres . " " . $c->Apellidos ?></option>      
                                 <? }?>
                             </select> </div>
                         <div class="form-group">
                             <label>Número de Cita</label>
-                            <input class="form-control" type="number" value="<? echo $noCita ?>" name="noCita"> </div>
+                            <input class="form-control" type="number" value="<? echo $noCita ?>" name="noCita"
+                                required data-validation-required-message="Fraccionamiento inválido."> </div>
                         <div class="form-group">
                             <label>Fecha</label>
-                            <input class="form-control" type="datetime-local" value="<? echo $fecha ?>" name="fecha"> </div>
+                            <input class="form-control" type="datetime-local" value="<? echo $fecha ?>" name="fecha"
+                                required data-validation-required-message="Fraccionamiento inválido."> </div>
                         <div class="form-group">
                             <label>Comentarios</label>
-                            <textarea class="form-control" rows="5" name="comentarios"><? echo $comentarios ?></textarea> </div>
+                            <textarea class="form-control" 
+                                rows="5" name="comentarios" required data-validation-required-message="Fraccionamiento inválido."
+                                ><? echo $comentarios ?></textarea> </div>
                         <div class="form-group">
                             <label>Inmueble</label><br>
-                            <select name="idInmueble">
+                            <select name="idInmueble" required>
                                 <? foreach ($Inmuebles as $i) { ?>      
                                     <option value="<? echo $i->id ?>"><? echo $i->Nombre . "  -  $" . $i->Precio . "  -  " . $i->Disponibilidad ?></option>      
                                 <? }?>
                             </select> </div>
                         <div class="form-group">
                             <label>Nivel de Interés en el Inmueble</label><br>
-                            <select name="tipoInteresadoId">
+                            <select name="tipoInteresadoId" required>
                                 <? foreach ($TipoInteresados as $t) { ?>      
                                     <option value="<? echo $t->id ?>"><? echo $t->Nombre ?></option>      
                                 <? }?>

@@ -43,13 +43,15 @@
                                     <div class="form-group">
                                         <label>Nombre(s)</label>
                                         <input type="text" class="form-control form-control-line" 
-                                            value="<? echo $nombres ?>" name="nombres"> </div>
+                                            value="<? echo $nombres ?>" name="nombres"
+                                            required data-validation-required-message="Nombre inválido."> </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Apellidos</label>
                                         <input type="text" class="form-control form-control-line" 
-                                            value="<? echo $apellidos ?>" name="apellidos"> </div>
+                                            value="<? echo $apellidos ?>" name="apellidos"
+                                            required data-validation-required-message="Apellidos inválidos."> </div>
                                 </div>
                             </div>
 
@@ -60,19 +62,21 @@
                             <div class="form-group">
                                 <label>Calle y Número</label>
                                 <input type="text" class="form-control form-control-line" 
-                                    value="<? echo $direccion ?>" name="direccion"> </div>
+                                    value="<? echo $direccion ?>" name="direccion"
+                                    required data-validation-required-message="Dirección inválida."> </div>
                             
                             <div class="form-group">
                                 <label>Colonia o Fraccionamiento</label>
                                 <input type="text" class="form-control form-control-line" 
-                                    value="<? echo $colonia ?>" name="colonia"> </div>
+                                    value="<? echo $colonia ?>" name="colonia"
+                                    required data-validation-required-message="Fraccionamiento inválido."> </div>
 
                             <div class="row p-t-20">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Estado</label>
-                                        <select name="estado" id="estados_select">
-                                            <option value="0">Selecciona una opción</option>
+                                        <select name="estado" id="estados_select" required >
+                                            <option value="">Selecciona una opción</option>
                                             <? foreach ($Estados as $e) { ?>      
                                                 <option value="<? echo $e->id ?>"><? echo $e->nombre?></option>      
                                             <? }?>
@@ -112,7 +116,8 @@
                                     <div class="form-group">
                                         <label class="control-label">Teléfono celular</label>
                                         <input type="text" placeholder="" data-mask="(999) 999-9999" 
-                                            class="form-control" name="telCel" value="<? echo $telCel ?>">
+                                            class="form-control" name="telCel" value="<? echo $telCel ?>"
+                                            required data-validation-required-message="Teléfono celular inválida.">
                                         <span class="font-13 text-muted">(999) 999-9999</span></div>
                                 </div>
                                 <div class="col-md-6">
@@ -129,8 +134,8 @@
 
                             <div class="form-group">
                                 <label>¿Cómo se enteró?</label>
-                                <select name="idComoSeEntero" id="entero_select">
-                                    <option value="0">Selecciona una opción</option>
+                                <select name="idComoSeEntero" id="entero_select" required>
+                                    <option value="">Selecciona una opción</option>
                                     <? foreach ($ComoSeEntero as $e) { ?>      
                                         <option <? echo ($e->id == $idComoSeEntero ? 'selected' : '') ?>
                                             value="<? echo $e->id ?>"><? echo $e->Descripcion?></option>      

@@ -3,9 +3,9 @@
 
         // Si no hay un estado seleccionado, 
         // entonces deshabilita el selector de municipios
-        if($("#estados_select").val() == 0) {
+        if($("#estados_select").val() == '') {
             $('#municipios_select').prop('disabled', true);
-            $("#municipios_select").html('<option value="0">No se ha seleccionado estado</option>'); 
+            $("#municipios_select").html('<option value="">No se ha seleccionado estado</option>'); 
         } else {
             $('#municipios_select').prop('disabled', false);
         }
@@ -31,7 +31,7 @@
         function onEstadosChange(idMuni) {
             id = $("#estados_select").val();
 
-            if(id != 0) {
+            if(id != '') {
                 url = "<?php echo base_url('index.php/Clientes/municipiosPorEstado'); ?>/" + id;
 
                 $.getJSON(url)
@@ -52,7 +52,7 @@
                     });
             } else {
                 $('#municipios_select').prop('disabled', true);
-                $("#municipios_select").html('<option value="0">No se ha seleccionado estado</option>'); 
+                $("#municipios_select").html('<option value="">No se ha seleccionado estado</option>'); 
             }
         }
 
