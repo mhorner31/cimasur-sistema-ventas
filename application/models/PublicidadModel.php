@@ -7,10 +7,18 @@ class PublicidadModel extends CI_Model
         $this->load->database();
     }
 
-    public function getPublicidad()
+    public function getPublicidad($id = NULL)
     {
-        $query = $this->db->get("ComoSeEntero");
-        return $query->result();
+        if( $id == NULL){
+            $query = $this->db->get("ComoSeEntero");
+            return $query->result();
+        }
+        else{
+            $query = $this->db->query(
+                "SELECT * FROM ComoSeEntero WHERE id = ?", 
+                array($id));
+            return $query->row();
+        }
     }
 
     public function insertItem()

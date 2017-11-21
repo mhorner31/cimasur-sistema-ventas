@@ -8,6 +8,7 @@ class Clientes extends CI_Controller {
             $this->load->model('ClientesModel');
             $this->load->helper('url_helper');
             $this->load->helper('html');
+            $this->load->helper('form');
     }
      
     /**
@@ -47,6 +48,7 @@ class Clientes extends CI_Controller {
         $ClientesModel = new ClientesModel;
         $data['Estados'] = $ClientesModel->getEstados();
         $data['ComoSeEntero'] = $ClientesModel->getComoSeEntero();
+        $data['StatusCliente'] = $ClientesModel->getStatus();
         $data['Clientes'] = $ClientesModel->getClientes();
 
 
@@ -67,6 +69,7 @@ class Clientes extends CI_Controller {
             $data['telRef'] = '';
             $data['hizoRecorrido'] = 0;
             $data['idComoSeEntero'] = 0;
+            $data['idStatus'] = 0;
 
             $data['nombresRef'] = "";
             $data['apellidosRef'] = "";
@@ -116,7 +119,7 @@ class Clientes extends CI_Controller {
 
             $data['idMunicipio'] = $cliente->idMunicipio;
             $data['idEstado'] = $ClientesModel->getEstadoId($cliente->idMunicipio);
-
+            $data['idStatus'] = $cliente->idStatus;            
             $data['idComoSeEntero'] = $cliente->idComoSeEntero;
 
             if ($cliente->idComoSeEntero == '13') {
@@ -186,7 +189,9 @@ class Clientes extends CI_Controller {
         $this->form_validation->set_rules(
             'telCel', 'Telefono Celular', 'trim|required');
         $this->form_validation->set_rules(
-            'idComoSeEntero', 'ComoSeEntero', 'callback_dropdown_check');
+            'idStatus', 'StatusCliente', 'callback_dropdown_check');
+        $this->form_validation->set_rules(
+            'idComoSeEntero', 'ComoSeEntero', 'callback_dropdown_check');            
 
         if ($this->input->post('idComoSeEntero') == '13') {
             
@@ -208,7 +213,7 @@ class Clientes extends CI_Controller {
 
     public function dropdown_check($str) {
         // 0 si no se ha hecho una seleccion
-        if ($str == '') {
+        if ($str == '0') {
             $this->form_validation->set_message('dropdown_check', 
                 'The {field} field was not selected a value.');
             return FALSE;

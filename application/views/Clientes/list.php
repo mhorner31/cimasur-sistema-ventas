@@ -27,7 +27,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">Citas</h4>
+                    <h4 class="card-title">Clientes</h4>
                     <h6 class="card-subtitle">Exportar las citas a Excel, PDF o imprimirlas</h6>
                     <div type="button" class="btn waves-effect waves-light btn-secondary">
                         <a href="<?php echo base_url('index.php/clientes/update/') ?>">Agregar nuevo cliente</a>
@@ -42,20 +42,22 @@
                                 <th>Como se Entero</th>
                                 <th>Fecha</th>
                                 <th>Recorrido</th>
-                                <th>Borrar</th>
+                                <th>Status</th>
+                                <th>Dar de baja</th>
                                 </tr>
                             </thead>
                             <tbody>                            
                                 <? foreach($clientes as $d) { ?>
                                     <tr>
-                                        <th  href="<?php echo base_url('index.php/clientes/update/'.$d->id);?>"><?echo $d->Nombres . " " . $d->Apellidos?></th>
+                                        <th><a href="<?php echo base_url('index.php/clientes/update/'.$d->id);?>"><?echo $d->Nombres . " " . $d->Apellidos?></a></th>
                                         <th><?echo $d->Email?></th>
                                         <th><?echo $d->Enterado?></th>
                                         <th><?echo $d->FechaIngreso?></th>
                                         <th><?echo $d->HizoRecorrido?></th>
+                                        <th><?echo $d->Status?></th>
                                         <th>
                                             <a class="btn waves-effect waves-light btn-secondary" onclick="if (confirm('¿Desea elimiar la seleccion?')) { location.href = '<?php echo base_url('index.php/clientes/eliminarCliemte/'.$d->id) ?>'; } return false;">
-                                                Eliminar
+                                                Dar de baja
                                             </a>
                                         </th>
                                     </tr>

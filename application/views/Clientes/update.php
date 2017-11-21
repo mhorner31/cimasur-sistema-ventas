@@ -75,8 +75,8 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Estado</label>
-                                        <select name="estado" id="estados_select" required >
-                                            <option value="">Selecciona una opción</option>
+                                        <select name="estado" id="estados_select" required>
+                                            <option value="0">Selecciona una opción</option>
                                             <? foreach ($Estados as $e) { ?>      
                                                 <option value="<? echo $e->id ?>"><? echo $e->nombre?></option>      
                                             <? }?>
@@ -135,7 +135,7 @@
                             <div class="form-group">
                                 <label>¿Cómo se enteró?</label>
                                 <select name="idComoSeEntero" id="entero_select" required>
-                                    <option value="">Selecciona una opción</option>
+                                    <option value="0">Selecciona una opción</option>
                                     <? foreach ($ComoSeEntero as $e) { ?>      
                                         <option <? echo ($e->id == $idComoSeEntero ? 'selected' : '') ?>
                                             value="<? echo $e->id ?>"><? echo $e->Descripcion?></option>      
@@ -153,6 +153,19 @@
                                     <? }?>
                                 </select> </div>
                             </div>
+
+                            <div class="form-group">
+                                <label>Status del cliente</label>
+                                <select name="idStatus">
+                                    <option value="0">Selecciona una opción</option>
+                                    <? foreach ($StatusCliente as $s) { 
+                                        if($s->id == $idStatus) { ?>
+                                            <option selected id="<?echo $s->id; ?>" value="<?echo $s->id; ?>"><? echo $s->Status; ?></option>      
+                                        <?} else { ?>
+                                            <option id="<?echo $s->id; ?>" value="<?echo $s->id; ?>"><? echo $s->Status; ?></option>      
+                                        <?}  ?>
+                                    <? }?>
+                                </select> </div>
 
                             <div id="refExtDiv">
 

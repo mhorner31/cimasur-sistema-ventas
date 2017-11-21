@@ -34,6 +34,15 @@ class ClientesModel extends CI_Model {
     }
 
     /**
+     * Traer la enumercación de Status Cliente
+     */
+    public function getStatus()
+    {
+        $query = $this->db->get("StatusCliente");
+        return $query->result();
+    }
+
+    /**
      * Traer todos los clientes
      */
     public function getClientes() 
@@ -53,9 +62,10 @@ class ClientesModel extends CI_Model {
     public function getListaClientes()
     {
         $sql = "SELECT c.id, c.Nombres, c.Apellidos, c.Email, c.FechaIngreso, c.HizoRecorrido, 
-            e.Descripcion as Enterado
+            e.Descripcion as Enterado, s.StatusId as Status 
         FROM Cliente c
-        INNER JOIN ComoSeEntero e ON c.idComoSeEntero = e.id";
+        INNER JOIN ComoSeEntero e ON c.idComoSeEntero = e.id
+        INNER JOIN StatusCliente s ON c.idStatus = s.id";
         $query = $this->db->query($sql);
         return $query->result(); 
     }
@@ -73,6 +83,7 @@ class ClientesModel extends CI_Model {
             'idMunicipio' => (int)$this->input->post('idMunicipio'),
             'email' => $email,
             'idComoSeEntero' => $this->input->post('idComoSeEntero'),
+            'idStatus' => $this->input->post('idStatus'),
             'fechaIngreso' => date('Y-m-d\TH:i:s'),
             'hizoRecorrido' => (int)$this->input->post('hizoRecorrido'),
             'idVendedor' => $idVendedor
@@ -252,6 +263,7 @@ class ClientesModel extends CI_Model {
             'idMunicipio' => (int)$this->input->post('idMunicipio'),
             'email' => $email,
             'idComoSeEntero' => $this->input->post('idComoSeEntero'),
+            'idStatus' => $this->input->post('idStatus'),
             'hizoRecorrido' => (int)$this->input->post('hizoRecorrido'),
         );
         
@@ -330,27 +342,12 @@ class ClientesModel extends CI_Model {
     }
 
     public function eliminarCliemte($idCliente) {
-        //Eliminar 
-        //  - telefonos
-        //  - referenciados
-        // para que sean agregados nuevamente
-        $this ->db-> where('idCliente', $idCliente);
-        $this ->db-> delete('Telefono');
-        
-        $referenciador = $this->getReferenciador($idCliente);
+        // Id Status 2 corresponde al status de "Baja"
+        $clienteData = array(
+            'idStatus' => 2
+        );
 
-        // Eliminar los registros en la tabla 
-        $this ->db-> where('idClienteDe', $idCliente);
-        $this ->db-> delete('ClienteReferenciador');
-
-        // Eliminar si tiene un referenciador
-        if (isset($referenciador)) {
-            $this ->db-> where('id', $referenciador->id);
-            $this ->db-> delete('Referenciador');
-        }
-
-        // Eliminar ahora el cliente
-        $this ->db-> where('id', $idCliente);
-        $this ->db-> delete('Cliente');
+        $this->db->where('id', $idCliente);
+        $this->db->update('Cliente', $clienteData);
     }
 }
