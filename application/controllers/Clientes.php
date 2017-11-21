@@ -161,7 +161,7 @@ class Clientes extends CI_Controller {
     {
         if ($this->validateData()) {
             $ClientesModel = new ClientesModel;
-            $ClientesModel->insertarCliente(1);
+            $ClientesModel->insertarCliente($this->session->user_data('id'));
             redirect(base_url('index.php/Clientes/index'));
         } else {
             //echo validation_errors();;

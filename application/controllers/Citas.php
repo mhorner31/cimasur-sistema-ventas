@@ -45,7 +45,7 @@ class Citas extends CI_Controller {
         } 
         
         $citasModel = new CitasModel;
-        $data['Clientes'] = $citasModel->getClientesPorVendedor(1);
+        $data['Clientes'] = $citasModel->getClientesPorVendedor($this->session->user_data('id'));
         $data['Inmuebles'] = $citasModel->getInmuebles();
         $data['TipoInteresados'] = $citasModel->getTipoInteresadoEnum();
 
