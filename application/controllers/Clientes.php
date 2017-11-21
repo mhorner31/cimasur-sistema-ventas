@@ -18,6 +18,11 @@ class Clientes extends CI_Controller {
     {
         $this->load->helper('url');
         $this->load->helper('html');
+        $this->load->library('session');
+        
+        if(!$this->session->userdata('logged_in')){
+            redirect('login');
+        } 
 
         $clientesModel = new ClientesModel;
         $data['clientes'] = $clientesModel->getListaClientes();
@@ -31,6 +36,14 @@ class Clientes extends CI_Controller {
 
     public function update($id = NULL) 
     {
+        $this->load->helper('url');
+        $this->load->helper('html');
+        $this->load->library('session');
+        
+        if(!$this->session->userdata('logged_in')){
+            redirect('login');
+        } 
+        
         $ClientesModel = new ClientesModel;
         $data['Estados'] = $ClientesModel->getEstados();
         $data['ComoSeEntero'] = $ClientesModel->getComoSeEntero();

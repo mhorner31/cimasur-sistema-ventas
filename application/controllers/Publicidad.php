@@ -20,6 +20,11 @@ class Publicidad extends CI_Controller
 
         $this->load->helper('url');
         $this->load->helper('html');
+        $this->load->library('session');
+        
+        if(!$this->session->userdata('logged_in')){
+            redirect('login');
+        } 
 
         $this->load->view('Plantilla/header_app');
         $this->load->view('Plantilla/topbar_app');
@@ -33,6 +38,11 @@ class Publicidad extends CI_Controller
 
         $this->load->helper('url');
         $this->load->helper('html');
+        $this->load->library('session');
+        
+        if(!$this->session->userdata('logged_in')){
+            redirect('login');
+        } 
  
         $this->load->view('Plantilla/header_app');
         $this->load->view('Plantilla/topbar_app');

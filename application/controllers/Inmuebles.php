@@ -15,11 +15,18 @@ class Inmuebles extends CI_Controller
 
     public function index()
     {
+        $this->load->helper('url');
+        $this->load->helper('html');
+        $this->load->library('session');
+        
+        if(!$this->session->userdata('logged_in')){
+            redirect('login');
+        }   
+
         $inmuebles=new InmueblesModel;
         $data['data']=$inmuebles->getInmuebles();
 
-        $this->load->helper('url');
-        $this->load->helper('html');
+        
 
         $this->load->view('Plantilla/header_app');
         $this->load->view('Plantilla/topbar_app');
@@ -30,10 +37,14 @@ class Inmuebles extends CI_Controller
 
     public function update($id = NULL)
     {
-
         $this->load->helper('url');
         $this->load->helper('html');
- 
+        $this->load->library('session');
+        
+        if(!$this->session->userdata('logged_in')){
+            redirect('login');
+        }   
+
         $this->load->view('Plantilla/header_app');
         $this->load->view('Plantilla/topbar_app');
         $this->load->view('Plantilla/sidebar_app');

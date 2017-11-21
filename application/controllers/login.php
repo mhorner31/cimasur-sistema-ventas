@@ -51,8 +51,10 @@ class Login extends CI_Controller {
         
                 //$username = $this->input->post('nickname');
                 $result = $this->LoginAppModel->informacion_usuario($nickname);
-                if ($result != false) {
+                if ($result != false && $result[0]->StatusId ==1) {
                     $session_data = array(
+                        'logged_in'=> TRUE,
+                        'id' =>$result[0]->id,
                         'nickname' => $result[0]->nickname,
                         'tipo' => $result[0]->idTipoUsuario,
                         'nombre' => $result[0]->Nombre,
@@ -61,10 +63,11 @@ class Login extends CI_Controller {
                         );
                     // Add user data in session
                     $this->session->set_userdata($session_data);
-                    redirect('construccion');
+                    redirect('citas');
                 //}
                 } else {
-                
+                    $data['mensajeLogin'] = "Usuario No Activo, contacte al administrador";
+                    $this->load->view('login_app', $data);
                 }
             } else {
                 $data['mensajeLogin'] = "Usuario o contraseña incorrectos";
@@ -73,8 +76,9 @@ class Login extends CI_Controller {
     }
 
     public function cerrarSesion(){
-        $sess_array = array('nickname' => '');
+        $sess_array = array('logged_in' => '');
         $this->session->unset_userdata($sess_array);
+        $this->session->sess_destroy();
         $data['mensajeLogin'] = 'Session terminada correctamente';
         $this->load->view('login_app', $data);
     }
