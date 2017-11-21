@@ -23,7 +23,7 @@
                         <h4 class="card-title">Publicidad</h4>
                         <h6 class="card-subtitle">Agregar nuevo medio de publicidad</h6>
                         
-                        <form class="form" method="post" action="<?php echo base_url('/index.php/publicidad/postData/'.$id);?>">                
+                        <form class="form" method="post" action="<?php echo base_url('/publicidad/postData/'.$id);?>">                
                             <div class="form-group row">
                                 <label for="descripcion" class="col-2 col-form-label">Descripción</label>
                                 <div class="col-10">

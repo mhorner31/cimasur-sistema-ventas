@@ -15,7 +15,7 @@
                     <h4 class="card-title">Inmuebles</h4>
                     <h6 class="card-subtitle">Exportar los inmuebles a Excel, PDF o Imprmirlos.</h6>
                     <div type="button" class="btn waves-effect waves-light btn-secondary">
-                        <a href="<?php echo base_url('index.php/inmuebles/update/') ?>">Agregar Inmueble</a>
+                        <a href="<?php echo base_url('/inmuebles/update/') ?>">Agregar Inmueble</a>
                     </div>
                     <div class="table-responsive m-t-40">
                         <table id="table" class="display wrap table table-hover table-striped table-bordered" 
@@ -33,13 +33,13 @@
                             <tbody>                            
                             <? foreach($data as $d) { ?>
                                 <tr>
-                                    <th><a href="<?php echo base_url('index.php/inmuebles/update/'.$d->id);?>"><?echo $d->Nombre;?> </a></th>
+                                    <th><a href="<?php echo base_url('/inmuebles/update/'.$d->id);?>"><?echo $d->Nombre;?> </a></th>
                                     <th><?echo $d->Tipo?></th>
                                     <th><?echo $d->Disponibilidad?></th>
                                     <th><?echo $d->Precio?></th>
                                     <th><?echo $d->Descripcion;?></th>
                                     <th>
-                                        <a class="btn waves-effect waves-light btn-secondary" onclick="if (confirm('¿Desea elimiar la selección?')) { location.href = '<?php echo base_url('index.php/inmuebles/delete/'.$d->id) ?>'; } return false;">
+                                        <a class="btn waves-effect waves-light btn-secondary" onclick="if (confirm('¿Desea elimiar la selección?')) { location.href = '<?php echo base_url('/inmuebles/delete/'.$d->id) ?>'; } return false;">
                                             Eliminar
                                         </a>
                                     </th>

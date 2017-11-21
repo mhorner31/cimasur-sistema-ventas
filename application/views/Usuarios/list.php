@@ -15,7 +15,7 @@
                     <h4 class="card-title">Usuarios</h4>
                     <h6 class="card-subtitle">Exportar los usuarios a Excel, PDF o Imprmirlos.</h6>
                     <div type="button" class="btn waves-effect waves-light btn-secondary">
-                        <a href="<?php echo base_url('index.php/usuarios/update/') ?>">Agregar Usuario</a>
+                        <a href="<?php echo base_url('/usuarios/update/') ?>">Agregar Usuario</a>
                     </div>
                     <div class="table-responsive m-t-40">
                         <table id="table" class="display wrap table table-hover table-striped table-bordered" 
@@ -35,7 +35,7 @@
                             <? foreach($data as $d) { ?>
                                 <? if($d->Tipo != "System") {?>
                                 <tr>
-                                    <th><a href="<?php echo base_url('index.php/usuarios/update/'.$d->id);?>"><?echo $d->nickname;?> </a></th>
+                                    <th><a href="<?php echo base_url('/usuarios/update/'.$d->id);?>"><?echo $d->nickname;?> </a></th>
                                     <th><?echo $d->Tipo?></th>
                                     <th><?echo $d->Nombre?></th>
                                     <th><?echo $d->Apellidos?></th>
@@ -43,16 +43,16 @@
                                     <th><?echo $d->Estatus;?></th>
                                     <th>
                                         <? if($d->Estatus == "Activo" && $d->Tipo != "Admin" ) {?>
-                                            <a class="btn waves-effect waves-light btn-secondary" onclick="if (confirm('¿Desea desactivar el usuario?')) { location.href = '<?php echo base_url('index.php/usuarios/cambiarEstatus/'.$d->id.'/2') ?>'; } return false;">
+                                            <a class="btn waves-effect waves-light btn-secondary" onclick="if (confirm('¿Desea desactivar el usuario?')) { location.href = '<?php echo base_url('/usuarios/cambiarEstatus/'.$d->id.'/2') ?>'; } return false;">
                                                 Desactivar
                                             </a>
                                         <? } else if($d->Estatus == "Inactivo") {?>
-                                            <a class="btn waves-effect waves-light btn-secondary" onclick="if (confirm('¿Desea activar el usuario?')) { location.href = '<?php echo base_url('index.php/usuarios/cambiarEstatus/'.$d->id.'/1') ?>'; } return false;">
+                                            <a class="btn waves-effect waves-light btn-secondary" onclick="if (confirm('¿Desea activar el usuario?')) { location.href = '<?php echo base_url('/usuarios/cambiarEstatus/'.$d->id.'/1') ?>'; } return false;">
                                                 Activar
                                             </a>
                                         <? }?>
                                         <? if( $d->id != $this->session->userdata('id') ) {?>
-                                            <a class="btn waves-effect waves-light btn-secondary" onclick="if (confirm('¿Desea eliminar la selección?')) { location.href = '<?php echo base_url('index.php/usuarios/delete/'.$d->id) ?>'; } return false;">
+                                            <a class="btn waves-effect waves-light btn-secondary" onclick="if (confirm('¿Desea eliminar la selección?')) { location.href = '<?php echo base_url('/usuarios/delete/'.$d->id) ?>'; } return false;">
                                                 Eliminar
                                             </a>
                                         <? }?>

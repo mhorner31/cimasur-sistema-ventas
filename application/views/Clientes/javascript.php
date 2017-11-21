@@ -32,7 +32,7 @@
             id = $("#estados_select").val();
 
             if(id != '') {
-                url = "<?php echo base_url('index.php/Clientes/municipiosPorEstado'); ?>/" + id;
+                url = "<?php echo base_url('/Clientes/municipiosPorEstado'); ?>/" + id;
 
                 $.getJSON(url)
                     .done(function(data) {

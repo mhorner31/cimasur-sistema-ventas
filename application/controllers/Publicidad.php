@@ -75,7 +75,7 @@ class Publicidad extends CI_Controller
        
        $this->db->where('id', $id);
        $this->db->delete('ComoSeEntero');
-       redirect(base_url('/index.php/publicidad/'));
+       redirect(base_url('/publicidad/'));
    }
 
    public function postData($id)
@@ -97,7 +97,7 @@ class Publicidad extends CI_Controller
 
        $publicidad=new PublicidadModel;
        $publicidad->insertItem();
-       redirect(base_url('/index.php/publicidad/'));
+       redirect(base_url('/publicidad/'));
     }
 
     public function updatePublicidad($id) 
@@ -108,7 +108,7 @@ class Publicidad extends CI_Controller
         
         $publicidad=new PublicidadModel;
         $publicidad->udpateItem($id);
-        redirect(base_url('/index.php/publicidad/'));
+        redirect(base_url('/publicidad/'));
     }
 }
 ?>

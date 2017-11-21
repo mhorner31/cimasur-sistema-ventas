@@ -29,7 +29,7 @@
                 <div class="card-body">
                     <h4 class="card-title">Actualizar/Insertar Cita</h4>
                     <h6 class="card-subtitle">Todos los campos son obligatorios.</h6>
-                    <form class="form-material m-t-40" method="post" action="<?php echo base_url('index.php/citas/postData/'.$IdCita);?>">
+                    <form class="form-material m-t-40" method="post" action="<?php echo base_url('/citas/postData/'.$IdCita);?>">
                         <div class="form-group">
                             <label>Cliente</label>
                             <select name="idCliente" required>

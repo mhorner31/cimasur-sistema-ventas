@@ -165,7 +165,7 @@ class Clientes extends CI_Controller {
         if ($this->validateData()) {
             $ClientesModel = new ClientesModel;
             $ClientesModel->insertarCliente($this->session->userdata('id'));
-            redirect(base_url('index.php/Clientes/index'));
+            redirect(base_url('/Clientes/index'));
         } else {
             //echo validation_errors();;
         }
@@ -237,12 +237,12 @@ class Clientes extends CI_Controller {
     {
         $ClientesModel = new ClientesModel;
         $ClientesModel->actualizarCliente($id);
-        redirect(base_url('index.php/clientes/index'));
+        redirect(base_url('/clientes/index'));
     }
 
     public function eliminarCliemte($id) {
         $ClientesModel = new ClientesModel;
         $ClientesModel->eliminarCliemte($id);
-        redirect(base_url('index.php/clientes/index'));
+        redirect(base_url('/clientes/index'));
     }
 }

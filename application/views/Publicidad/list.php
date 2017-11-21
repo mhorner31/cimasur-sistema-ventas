@@ -15,7 +15,7 @@
                     <h4 class="card-title">Medios de publicidad</h4>
                     <h6 class="card-subtitle">Exportar los medios a Excel, PDF o Imprmirlos.</h6>
                     <div type="button" class="btn waves-effect waves-light btn-secondary">
-                        <a href="<?php echo base_url('index.php/publicidad/update/') ?>">Agregar nuevo medio.</a>
+                        <a href="<?php echo base_url('/publicidad/update/') ?>">Agregar nuevo medio.</a>
                     </div>
                     <div class="table-responsive m-t-40">
                         <table id="table" class="display wrap table table-hover table-striped table-bordered" 
@@ -29,9 +29,9 @@
                             <tbody>                            
                             <? foreach($data as $d) { ?>
                                 <tr>
-                                    <th><a href="<?php echo base_url('index.php/publicidad/update/'.$d->id);?>"><?echo $d->Descripcion;?> </a></th>
+                                    <th><a href="<?php echo base_url('/publicidad/update/'.$d->id);?>"><?echo $d->Descripcion;?> </a></th>
                                     <th>
-                                        <a class="btn waves-effect waves-light btn-secondary" onclick="if (confirm('¿Desea elimiar la selección?')) { location.href = '<?php echo base_url('index.php/publicidad/delete/'.$d->id) ?>'; } return false;">
+                                        <a class="btn waves-effect waves-light btn-secondary" onclick="if (confirm('¿Desea elimiar la selección?')) { location.href = '<?php echo base_url('/publicidad/delete/'.$d->id) ?>'; } return false;">
                                             Eliminar
                                         </a>
                                     </th>

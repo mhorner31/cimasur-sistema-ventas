@@ -30,7 +30,7 @@
                     <h4 class="card-title">Clientes</h4>
                     <h6 class="card-subtitle">Exportar las citas a Excel, PDF o imprimirlas</h6>
                     <div type="button" class="btn waves-effect waves-light btn-secondary">
-                        <a href="<?php echo base_url('index.php/clientes/update/') ?>">Agregar nuevo cliente</a>
+                        <a href="<?php echo base_url('/clientes/update/') ?>">Agregar nuevo cliente</a>
                     </div>
                     <div class="table-responsive m-t-40">
                         <table id="table" class="display nowrap table table-hover table-striped table-bordered" 
@@ -49,14 +49,14 @@
                             <tbody>                            
                                 <? foreach($clientes as $d) { ?>
                                     <tr>
-                                        <th><a href="<?php echo base_url('index.php/clientes/update/'.$d->id);?>"><?echo $d->Nombres . " " . $d->Apellidos?></a></th>
+                                        <th><a href="<?php echo base_url('/clientes/update/'.$d->id);?>"><?echo $d->Nombres . " " . $d->Apellidos?></a></th>
                                         <th><?echo $d->Email?></th>
                                         <th><?echo $d->Enterado?></th>
                                         <th><?echo $d->FechaIngreso?></th>
                                         <th><?echo $d->HizoRecorrido?></th>
                                         <th><?echo $d->Status?></th>
                                         <th>
-                                            <a class="btn waves-effect waves-light btn-secondary" onclick="if (confirm('¿Desea elimiar la seleccion?')) { location.href = '<?php echo base_url('index.php/clientes/eliminarCliemte/'.$d->id) ?>'; } return false;">
+                                            <a class="btn waves-effect waves-light btn-secondary" onclick="if (confirm('¿Desea elimiar la seleccion?')) { location.href = '<?php echo base_url('/clientes/eliminarCliemte/'.$d->id) ?>'; } return false;">
                                                 Dar de baja
                                             </a>
                                         </th>

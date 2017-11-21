@@ -88,7 +88,7 @@ class Inmuebles extends CI_Controller
        
        $this->db->where('id', $id);
        $this->db->delete('Inmueble');
-       redirect(base_url('/index.php/inmuebles/'));
+       redirect(base_url('/inmuebles/'));
    }
 
    public function postData($id)
@@ -110,7 +110,7 @@ class Inmuebles extends CI_Controller
 
        $inmuebles=new InmueblesModel;
        $inmuebles->insertItem();
-       redirect(base_url('/index.php/inmuebles/'));
+       redirect(base_url('/inmuebles/'));
     }
 
     public function updateInmueble($id) 
@@ -121,7 +121,7 @@ class Inmuebles extends CI_Controller
         
         $inmuebles=new InmueblesModel;
         $inmuebles->udpateItem($id);
-        redirect(base_url('/index.php/inmuebles/'));
+        redirect(base_url('/inmuebles/'));
     }
 }
 ?>

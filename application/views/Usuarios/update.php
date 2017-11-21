@@ -23,7 +23,7 @@
                         <h4 class="card-title">Usuarios</h4>
                         <h6 class="card-subtitle">Alta de usuario</h6>
                         
-                        <form class="form" method="post" action="<?php echo base_url('/index.php/usuarios/postData/'.$id);?>">
+                        <form class="form" method="post" action="<?php echo base_url('/usuarios/postData/'.$id);?>">
                             <div class="form-group m-t-40 row">
                                 <label for="usuario" class="col-2 col-form-label">Usuario</label>
                                 <div class="col-10">

@@ -26,7 +26,7 @@ class Login extends CI_Controller {
         $this->load->helper('html');
 
         if($this->session->userdata('nickname')){
-            redirect('construccion');
+            redirect('bienvenido');
         }else{
             $data['mensajeLogin'] = "";
             $this->load->view('login_app', $data);
@@ -35,44 +35,33 @@ class Login extends CI_Controller {
 
     public function iniciarSesion() 
     {
-        
-        /*$this->form_validation->set_rules('username', 'Username', 'trim|required|xss_clean');
-        $this->form_validation->set_rules('password', 'Password', 'trim|required|xss_clean');
-        
-        if ($this->form_validation->run() == FALSE) {
-            if(isset($this->session->userdata['logged_in'])){
-                redirect('construccion');
-            }else{
-                $this->load->view('login_app');
-            }
-        } else {*/
-            $nickname = $_POST['nickname'];
-            if ($this->LoginAppModel->login($nickname, md5($_POST['password']))) {
-        
-                //$username = $this->input->post('nickname');
-                $result = $this->LoginAppModel->informacion_usuario($nickname);
-                if ($result != false && $result[0]->StatusId ==1) {
-                    $session_data = array(
-                        'logged_in'=> TRUE,
-                        'id' =>$result[0]->id,
-                        'nickname' => $result[0]->nickname,
-                        'tipo' => $result[0]->idTipoUsuario,
-                        'nombre' => $result[0]->Nombre,
-                        'apellidos' => $result[0]->Apellidos,
-                        'email' => $result[0]->email,
-                        );
-                    // Add user data in session
-                    $this->session->set_userdata($session_data);
-                    redirect('citas');
-                //}
-                } else {
-                    $data['mensajeLogin'] = "Usuario No Activo, contacte al administrador";
-                    $this->load->view('login_app', $data);
-                }
+        $nickname = $_POST['nickname'];
+        if ($this->LoginAppModel->login($nickname, md5($_POST['password']))) {
+    
+            //$username = $this->input->post('nickname');
+            $result = $this->LoginAppModel->informacion_usuario($nickname);
+            if ($result != false && $result[0]->StatusId ==1) {
+                $session_data = array(
+                    'logged_in'=> TRUE,
+                    'id' =>$result[0]->id,
+                    'nickname' => $result[0]->nickname,
+                    'tipo' => $result[0]->idTipoUsuario,
+                    'nombre' => $result[0]->Nombre,
+                    'apellidos' => $result[0]->Apellidos,
+                    'email' => $result[0]->email,
+                    );
+                // Add user data in session
+                $this->session->set_userdata($session_data);
+                redirect('citas');
+            //}
             } else {
-                $data['mensajeLogin'] = "Usuario o contraseña incorrectos";
+                $data['mensajeLogin'] = "Usuario No Activo, contacte al administrador";
                 $this->load->view('login_app', $data);
             }
+        } else {
+            $data['mensajeLogin'] = "Usuario o contraseña incorrectos";
+            $this->load->view('login_app', $data);
+        }
     }
 
     public function cerrarSesion(){

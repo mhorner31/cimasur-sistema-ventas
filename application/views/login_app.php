@@ -46,7 +46,7 @@
             <div class="login-box card">
             <img src="<?php echo base_url();?>/assets/images/cimasur_logo_back.png" alt="homepage" class="dark-logo" />
                 <div class="card-body">
-                    <form class="form-horizontal form-material" id="loginform" action="<?php echo base_url('index.php/login/iniciarSesion');?>"  method="POST">
+                    <form class="form-horizontal form-material" id="loginform" action="<?php echo base_url('/login/iniciarSesion');?>"  method="POST">
                         <h3 class="box-title m-b-20">Iniciar Sesión</h3>
                         <div class="form-group ">
                             <div class="col-xs-12">

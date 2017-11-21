@@ -92,14 +92,14 @@ class Citas extends CI_Controller {
     {
         $citasModel = new CitasModel;
         $citasModel->insertarCita();
-        redirect(base_url('index.php/citas/index'));
+        redirect(base_url('/citas/index'));
     }
 
     public function actualizarCita($id) 
     {
         $citasModel = new CitasModel;
         $citasModel->actualizarCita($id);
-        redirect(base_url('index.php/citas/index'));
+        redirect(base_url('/citas/index'));
     }
 
 
@@ -110,6 +110,6 @@ class Citas extends CI_Controller {
        
        $this->db->where('id', $id);
        $this->db->delete('Cita');
-       redirect(base_url('/index.php/citas/'));
+       redirect(base_url('/citas/'));
    }
 }

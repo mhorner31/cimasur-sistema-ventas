@@ -89,7 +89,7 @@ class Usuarios extends CI_Controller
        
        $this->db->where('id', $id);
        $this->db->delete('Usuario');
-       redirect(base_url('/index.php/usuarios/'));
+       redirect(base_url('/usuarios/'));
    }
 
    public function cambiarEstatus($id=0, $status=0) 
@@ -104,7 +104,7 @@ class Usuarios extends CI_Controller
        $this->db->where('id', $id);        
        $this->db->update('Usuario', $data);
 
-       redirect(base_url('/index.php/usuarios/'));
+       redirect(base_url('/usuarios/'));
    }  
 
    public function postData($id)
@@ -126,7 +126,7 @@ class Usuarios extends CI_Controller
 
        $usuarios=new UsuariosModel;
        $usuarios->insertarUsuario();
-       redirect(base_url('/index.php/usuarios/'));
+       redirect(base_url('/usuarios/'));
     }
 
     public function actualizarUsuario($id) 
@@ -137,7 +137,7 @@ class Usuarios extends CI_Controller
         
         $usuarios=new UsuariosModel;
         $usuarios->actualizarUsuario($id);
-        redirect(base_url('/index.php/usuarios/'));
+        redirect(base_url('/usuarios/'));
     }
 }
 ?>

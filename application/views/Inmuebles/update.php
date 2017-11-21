@@ -23,7 +23,7 @@
                         <h4 class="card-title">Inmuebles</h4>
                         <h6 class="card-subtitle">Alta de inmueble</h6>
                         
-                        <form class="form" method="post" action="<?php echo base_url('/index.php/inmuebles/postData/'.$id);?>">
+                        <form class="form" method="post" action="<?php echo base_url('/inmuebles/postData/'.$id);?>">
                             <div class="form-group m-t-40 row">
                                 <label for="nombre" class="col-2 col-form-label">Nombre del Inmueble</label>
                                 <div class="col-10">
