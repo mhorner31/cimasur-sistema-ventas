@@ -45,7 +45,9 @@
                                     <label>Número de Cita</label>
                                     <input class="form-control" type="number" value="<? echo $noCita ?>" 
                                         name="noCita" id="citaNoInput" readonly
-                                        required data-validation-required-message="Numero de Cita inválido."> </div>
+                                        required > 
+                                    <div class="form-control-feedback"><small><i>Este valor no se puede modificar, es actualizado automáticamente de acuerdo al cliente seleccionado</i></small></div>
+                                </div>     
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
