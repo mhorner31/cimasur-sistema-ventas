@@ -21,7 +21,7 @@
                 <!-- Logo -->
                 <!-- ============================================================== -->
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="index.html">
+                    <a class="navbar-brand">
                         <!-- Logo text --><span>
                          <!-- dark Logo text -->
                          <img src="<?php echo base_url();?>/assets/images/cimasur_logo.png" alt="homepage" class="dark-logo" />
