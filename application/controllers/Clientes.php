@@ -70,6 +70,7 @@ class Clientes extends CI_Controller {
             $data['hizoRecorrido'] = 0;
             $data['idComoSeEntero'] = 0;
             $data['idStatus'] = 0;
+            $data['idClienteRef'] = 0;
 
             $data['nombresRef'] = "";
             $data['apellidosRef'] = "";

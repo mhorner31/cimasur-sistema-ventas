@@ -76,7 +76,7 @@
                                     <div class="form-group">
                                         <label>Estado</label>
                                         <select name="estado" id="estados_select" required>
-                                            <option value="0">Selecciona una opción</option>
+                                            <option value="">Selecciona una opción</option>
                                             <? foreach ($Estados as $e) { ?>      
                                                 <option value="<? echo $e->id ?>"><? echo $e->nombre?></option>      
                                             <? }?>
@@ -148,7 +148,7 @@
                             <div class="form-group">
                                 <label>¿Cómo se enteró?</label>
                                 <select name="idComoSeEntero" id="entero_select" required>
-                                    <option value="0">Selecciona una opción</option>
+                                    <option value="">Selecciona una opción</option>
                                     <? foreach ($ComoSeEntero as $e) { ?>      
                                         <option <? echo ($e->id == $idComoSeEntero ? 'selected' : '') ?>
                                             value="<? echo $e->id ?>"><? echo $e->Descripcion?></option>      
@@ -159,7 +159,7 @@
                                 <div class="form-group">
                                 <label>Cliente que referenció</label>
                                 <select name="clienteReferenciador" id="cliRef">
-                                    <option value="0">Selecciona una opción</option>
+                                    <option value="">Selecciona una opción</option>
                                     <? foreach ($Clientes as $c) { ?>      
                                         <option <? echo ($c->Id == $idClienteRef ? 'selected' : '') ?>
                                             value="<? echo $c->Id ?>"><? echo $c->Nombres . " " . $c->Apellidos?></option>      

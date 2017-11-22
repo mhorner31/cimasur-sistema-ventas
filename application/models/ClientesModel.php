@@ -138,11 +138,13 @@ class ClientesModel extends CI_Model {
             
             $email = $this->input->post('emailRef') == '' ?
                 NULL : $this->input->post('emailRef');
+            $tel = $this->input->post('telRef') == '' ?
+                NULL : $this->input->post('telRef');
             $referenciadorData = array(
                 'nombres' => $this->input->post('nombresRef'),
                 'apellidos' => $this->input->post('apellidosRef'),
                 'email' => $email,
-                'telefono' => $this->input->post('telRef'),
+                'telefono' => $tel,
             );
             $this->db->insert('Referenciador', $referenciadorData);
             // id del nuevo referenciador
