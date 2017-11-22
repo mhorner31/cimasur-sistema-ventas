@@ -133,6 +133,19 @@
                             <hr>
 
                             <div class="form-group">
+                                <label>Status del cliente</label>
+                                <select name="idStatus" required>
+                                    <option value="">Selecciona una opción</option>
+                                    <? foreach ($StatusCliente as $s) { 
+                                        if($s->id == $idStatus) { ?>
+                                            <option selected id="<?echo $s->id; ?>" value="<?echo $s->id; ?>"><? echo $s->Status; ?></option>      
+                                        <?} else { ?>
+                                            <option id="<?echo $s->id; ?>" value="<?echo $s->id; ?>"><? echo $s->Status; ?></option>      
+                                        <?}  ?>
+                                    <? }?>
+                                </select> </div>
+
+                            <div class="form-group">
                                 <label>¿Cómo se enteró?</label>
                                 <select name="idComoSeEntero" id="entero_select" required>
                                     <option value="0">Selecciona una opción</option>
@@ -145,7 +158,7 @@
                             <div id="refClienteDiv">
                                 <div class="form-group">
                                 <label>Cliente que referenció</label>
-                                <select name="clienteReferenciador">
+                                <select name="clienteReferenciador" id="cliRef">
                                     <option value="0">Selecciona una opción</option>
                                     <? foreach ($Clientes as $c) { ?>      
                                         <option <? echo ($c->Id == $idClienteRef ? 'selected' : '') ?>
@@ -154,30 +167,17 @@
                                 </select> </div>
                             </div>
 
-                            <div class="form-group">
-                                <label>Status del cliente</label>
-                                <select name="idStatus">
-                                    <option value="0">Selecciona una opción</option>
-                                    <? foreach ($StatusCliente as $s) { 
-                                        if($s->id == $idStatus) { ?>
-                                            <option selected id="<?echo $s->id; ?>" value="<?echo $s->id; ?>"><? echo $s->Status; ?></option>      
-                                        <?} else { ?>
-                                            <option id="<?echo $s->id; ?>" value="<?echo $s->id; ?>"><? echo $s->Status; ?></option>      
-                                        <?}  ?>
-                                    <? }?>
-                                </select> </div>
-
                             <div id="refExtDiv">
 
                                 <div class="form-group">
                                     <label>Nombre(s)</label>
                                     <input type="text" class="form-control form-control-line" 
-                                        value="<? echo $nombresRef ?>" name="nombresRef"> </div>
+                                        value="<? echo $nombresRef ?>" name="nombresRef" id="nomRef"> </div>
                             
                                 <div class="form-group">
                                     <label>Apellidos</label>
                                     <input type="text" class="form-control form-control-line" 
-                                        value="<? echo $apellidosRef ?>" name="apellidosRef"> </div>
+                                        value="<? echo $apellidosRef ?>" name="apellidosRef" id="apeRef"> </div>
 
                                 <div class="form-group">
                                     <label>Teléfono</label>

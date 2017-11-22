@@ -63,14 +63,20 @@
             text = $("#entero_select  option:selected").text();
             if (text == 'Referido por cliente') {
                 $("#refClienteDiv").show();
+                $("#cliRef").prop("required", true);
             } else {
                 $("#refClienteDiv").hide();
+                $("#cliRef").prop("required", false);
             }
 
             if (text == 'Referido por persona externa') {
                 $("#refExtDiv").show();
+                $("#nomRef").prop("required", true);
+                $("#apeRef").prop("required", true);
             } else {
                 $("#refExtDiv").hide();
+                $("#nomRef").prop("required", false);
+                $("#apeRef").prop("required", false);
             }
         }
 

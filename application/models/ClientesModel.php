@@ -62,7 +62,7 @@ class ClientesModel extends CI_Model {
     public function getListaClientes()
     {
         $sql = "SELECT c.id, c.Nombres, c.Apellidos, c.Email, c.FechaIngreso, c.HizoRecorrido, 
-            e.Descripcion as Enterado, s.StatusId as Status 
+            e.Descripcion as Enterado, s.Status 
         FROM Cliente c
         INNER JOIN ComoSeEntero e ON c.idComoSeEntero = e.id
         INNER JOIN StatusCliente s ON c.idStatus = s.id";
