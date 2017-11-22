@@ -212,8 +212,9 @@ class Clientes extends CI_Controller {
     }
 
     public function dropdown_check($str) {
-        // 0 si no se ha hecho una seleccion
-        if ($str == '0') {
+        // Cadena Vacia si no se ha hecho una seleccion
+        // Tiene que comparar contra ''
+        if ($str == '') {
             $this->form_validation->set_message('dropdown_check', 
                 'The {field} field was not selected a value.');
             return FALSE;
