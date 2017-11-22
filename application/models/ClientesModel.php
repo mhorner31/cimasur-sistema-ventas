@@ -83,7 +83,7 @@ class ClientesModel extends CI_Model {
             'idMunicipio' => (int)$this->input->post('idMunicipio'),
             'email' => $email,
             'idComoSeEntero' => $this->input->post('idComoSeEntero'),
-            'idStatus' => $this->input->post('idStatus'),
+            'idStatus' => 1,
             'fechaIngreso' => date('Y-m-d\TH:i:s'),
             'hizoRecorrido' => (int)$this->input->post('hizoRecorrido'),
             'idVendedor' => $idVendedor
@@ -347,6 +347,16 @@ class ClientesModel extends CI_Model {
         // Id Status 2 corresponde al status de "Baja"
         $clienteData = array(
             'idStatus' => 2
+        );
+
+        $this->db->where('id', $idCliente);
+        $this->db->update('Cliente', $clienteData);
+    }
+
+    public function reactivarCliente($idCliente) {
+        // Id Status 1 corresponde al status de "Vigente"
+        $clienteData = array(
+            'idStatus' => 1
         );
 
         $this->db->where('id', $idCliente);

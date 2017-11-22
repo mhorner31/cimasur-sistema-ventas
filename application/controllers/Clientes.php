@@ -69,7 +69,6 @@ class Clientes extends CI_Controller {
             $data['telRef'] = '';
             $data['hizoRecorrido'] = 0;
             $data['idComoSeEntero'] = 0;
-            $data['idStatus'] = 0;
             $data['idClienteRef'] = 0;
 
             $data['nombresRef'] = "";
@@ -120,7 +119,6 @@ class Clientes extends CI_Controller {
 
             $data['idMunicipio'] = $cliente->idMunicipio;
             $data['idEstado'] = $ClientesModel->getEstadoId($cliente->idMunicipio);
-            $data['idStatus'] = $cliente->idStatus;            
             $data['idComoSeEntero'] = $cliente->idComoSeEntero;
 
             if ($cliente->idComoSeEntero == '13') {
@@ -190,8 +188,6 @@ class Clientes extends CI_Controller {
         $this->form_validation->set_rules(
             'telCel', 'Telefono Celular', 'trim|required');
         $this->form_validation->set_rules(
-            'idStatus', 'StatusCliente', 'callback_dropdown_check');
-        $this->form_validation->set_rules(
             'idComoSeEntero', 'ComoSeEntero', 'callback_dropdown_check');            
 
         if ($this->input->post('idComoSeEntero') == '13') {
@@ -245,6 +241,12 @@ class Clientes extends CI_Controller {
     public function eliminarCliemte($id) {
         $ClientesModel = new ClientesModel;
         $ClientesModel->eliminarCliemte($id);
+        redirect(base_url('/clientes/index'));
+    }
+
+    public function reactivarCliente($id) {
+        $ClientesModel = new ClientesModel;
+        $ClientesModel->reactivarCliente($id);
         redirect(base_url('/clientes/index'));
     }
 }

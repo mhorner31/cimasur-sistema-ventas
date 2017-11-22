@@ -133,19 +133,6 @@
                             <hr>
 
                             <div class="form-group">
-                                <label>Status del cliente</label>
-                                <select name="idStatus" required>
-                                    <option value="">Selecciona una opción</option>
-                                    <? foreach ($StatusCliente as $s) { 
-                                        if($s->id == $idStatus) { ?>
-                                            <option selected id="<?echo $s->id; ?>" value="<?echo $s->id; ?>"><? echo $s->Status; ?></option>      
-                                        <?} else { ?>
-                                            <option id="<?echo $s->id; ?>" value="<?echo $s->id; ?>"><? echo $s->Status; ?></option>      
-                                        <?}  ?>
-                                    <? }?>
-                                </select> </div>
-
-                            <div class="form-group">
                                 <label>¿Cómo se enteró?</label>
                                 <select name="idComoSeEntero" id="entero_select" required>
                                     <option value="">Selecciona una opción</option>
