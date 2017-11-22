@@ -11,7 +11,7 @@ class LoginAppModel extends CI_Model {
     
         $condition = "nickname =" . "'" . $nickname . "' AND " . "password =" . "'" . $password. "'";
         $this->db->select('*');
-        $this->db->from('usuario');
+        $this->db->from('Usuario');
         $this->db->where($condition);
         $this->db->limit(1);
         $query = $this->db->get();
@@ -27,7 +27,7 @@ class LoginAppModel extends CI_Model {
         
         $condition = "nickname =" . "'" . $nickname . "'";
         $this->db->select('*');
-        $this->db->from('usuario');
+        $this->db->from('Usuario');
         $this->db->where($condition);
         $this->db->limit(1);
         $query = $this->db->get();

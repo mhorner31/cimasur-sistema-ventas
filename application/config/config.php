@@ -23,7 +23,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost/cimasur';
+//$config['base_url'] = 'http://www.compra-venta-casas.com/crm/index.php';
+$config['base_url'] = 'http://www.compra-venta-casas.com/crm/';
 
 /*
 |--------------------------------------------------------------------------

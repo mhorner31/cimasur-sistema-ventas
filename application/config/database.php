@@ -75,10 +75,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost:8181',
-	'username' => 'cimasur',
-	'password' => 'cimasur',
-	'database' => 'CimasurDB',
+	'hostname' => 'localhost',
+	'username' => 'sanagu66_cimasur',
+	'password' => 'crm2017',
+	'database' => 'sanagu66_CimasurDB',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
