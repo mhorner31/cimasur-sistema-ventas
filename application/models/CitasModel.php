@@ -109,4 +109,13 @@ class CitasModel extends CI_Model {
         $this->db->where('id', $id);
         $this->db->delete('Cita');
     }
+
+    public function obtenerSigNoCitaCliente($idCliente) 
+    {
+        $sql = "SELECT (COUNT(*) + 1) as nextNo
+                FROM Cita c
+                WHERE c.idCliente = ?";
+        $query = $this->db->query($sql, array($idCliente));
+        return $query->row();
+    }
 }

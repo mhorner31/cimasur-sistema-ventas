@@ -73,6 +73,7 @@ class Citas extends CI_Controller {
         $this->load->view('Plantilla/topbar_app');
         $this->load->view('Plantilla/sidebar_app');
         $this->load->view('Citas/update', $data);
+        $this->load->view('Citas/javascript');
         $this->load->view('Plantilla/footer_app');
     }
 
@@ -108,5 +109,15 @@ class Citas extends CI_Controller {
         $citasModel = new CitasModel;
         $citasModel->eliminarCita($id);
         redirect(base_url('/citas/'));
+    }
+
+    /**
+     * Regresa el siguiente numero de cita para un cliente
+     */
+    public function sigNoCita($idCliente) 
+    {
+        header('Content-Type: application/json');
+        $citasModel = new citasModel;
+        echo json_encode($citasModel->obtenerSigNoCitaCliente($idCliente));
     }
 }

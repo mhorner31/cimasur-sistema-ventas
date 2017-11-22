@@ -32,7 +32,7 @@
                     <form class="form-material m-t-40" method="post" action="<?php echo base_url('/citas/postData/'.$IdCita);?>">
                         <div class="form-group">
                             <label>Cliente</label>
-                            <select name="idCliente" required>
+                            <select name="idCliente" id="clientes_select" required>
                                 <option value="">Selecciona una opción</option>
                                 <? foreach ($Clientes as $c) { ?>      
                                     <option value="<? echo $c->Id ?>"><? echo $c->Nombres . " " . $c->Apellidos ?></option>      
@@ -43,7 +43,8 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Número de Cita</label>
-                                    <input class="form-control" type="number" value="<? echo $noCita ?>" name="noCita"
+                                    <input class="form-control" type="number" value="<? echo $noCita ?>" 
+                                        name="noCita" id="citaNoInput" readonly
                                         required data-validation-required-message="Numero de Cita inválido."> </div>
                             </div>
                             <div class="col-md-6">
