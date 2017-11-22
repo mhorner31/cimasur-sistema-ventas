@@ -56,9 +56,15 @@
                                         <th><?echo $d->HizoRecorrido?></th>
                                         <th><?echo $d->Status?></th>
                                         <th>
-                                            <a class="btn waves-effect waves-light btn-secondary" onclick="if (confirm('¿Desea elimiar la seleccion?')) { location.href = '<?php echo base_url('/clientes/eliminarCliemte/'.$d->id) ?>'; } return false;">
-                                                Dar de baja
-                                            </a>
+                                            <? if($d->Status == 'Vigente') { ?>
+                                                <a class="btn waves-effect waves-light btn-secondary" onclick="if (confirm('¿Desea elimiar la seleccion?')) { location.href = '<?php echo base_url('/clientes/eliminarCliemte/'.$d->id) ?>'; } return false;">
+                                                    Desactivar usuario
+                                                </a>      
+                                            <?} else { ?>
+                                                <a class="btn waves-effect waves-light btn-secondary" onclick="if (confirm('¿Desea reactivar la seleccion?')) { location.href = '<?php echo base_url('/clientes/reactivarCliente/'.$d->id) ?>'; } return false;">
+                                                    Reactivar usuario
+                                                </a>      
+                                            <?}  ?>
                                         </th>
                                     </tr>
                                 <?}?>
