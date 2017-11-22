@@ -39,6 +39,7 @@
                                 <tr>
                                 <th>Cliente</th>
                                 <th>NoCita</th>
+                                <th>Inmueble de Interes</th>
                                 <th>Interes</th>
                                 <th>Fecha</th>
                                 <th>Actualizar</th>
@@ -49,10 +50,12 @@
                                     <tr>
                                         <th><a href="<?php echo base_url('/citas/update/'.$d->id);?>"><?echo $d->Nombres . " " . $d->Apellidos?></a></th>
                                         <th><?echo $d->NoCita?></th>
+                                        <th><?echo $d->inmueble?></th>
                                         <th><?echo $d->Interesado?></th>
                                         <th><?echo $d->Fecha?></th>                                        
                                         <th>
-                                            <a class="btn waves-effect waves-light btn-secondary" onclick="if (confirm('¿Desea elimiar la seleccion?')) { location.href = '<?php echo base_url('/citas/delete/'.$d->id) ?>'; } return false;">
+                                            <a class="btn waves-effect waves-light btn-secondary" 
+                                                onclick="if (confirm('¿Desea elimiar la seleccion?')) { location.href = '<?php echo base_url('/citas/delete/'.$d->id) ?>'; } return false;">
                                                 Eliminar
                                             </a>
                                         </th>

@@ -34,7 +34,7 @@ class CitasModel extends CI_Model {
     public function getCitas($id = NULL)
     {
         $sql = "SELECT * FROM (
-                    SELECT c.id, cl.Nombres, cl.Apellidos, c.NoCita, c.Fecha, 
+                    SELECT c.id, cl.Nombres, cl.Apellidos, c.NoCita, DATE_FORMAT(c.Fecha, '%d-%m-%Y') as Fecha,
                         c.Comentarios, im.nombre as inmueble, ti.Nombre as Interesado
                     FROM Cita c
                     INNER JOIN Cliente cl ON c.IdCliente = cl.Id
@@ -97,5 +97,16 @@ class CitasModel extends CI_Model {
         );
         $this->db->where('idCita', $id);
         $this->db->update('InmuebleCliente', $inmuebleData);
+    }
+
+    public function eliminarCita($id)
+    {
+        // Eliminar primero los records secundarios
+        $this->db->where('idCita', $id);
+        $this->db->delete('InmuebleCliente');
+
+        // Elimimar ahora los records principales
+        $this->db->where('id', $id);
+        $this->db->delete('Cita');
     }
 }

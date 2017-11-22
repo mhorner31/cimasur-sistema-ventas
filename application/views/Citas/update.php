@@ -33,38 +33,57 @@
                         <div class="form-group">
                             <label>Cliente</label>
                             <select name="idCliente" required>
+                                <option value="">Selecciona una opción</option>
                                 <? foreach ($Clientes as $c) { ?>      
                                     <option value="<? echo $c->Id ?>"><? echo $c->Nombres . " " . $c->Apellidos ?></option>      
                                 <? }?>
                             </select> </div>
-                        <div class="form-group">
-                            <label>Número de Cita</label>
-                            <input class="form-control" type="number" value="<? echo $noCita ?>" name="noCita"
-                                required data-validation-required-message="Fraccionamiento inválido."> </div>
-                        <div class="form-group">
-                            <label>Fecha</label>
-                            <input class="form-control" type="datetime-local" value="<? echo $fecha ?>" name="fecha"
-                                required data-validation-required-message="Fraccionamiento inválido."> </div>
+
+                        <div class="row p-t-20">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Número de Cita</label>
+                                    <input class="form-control" type="number" value="<? echo $noCita ?>" name="noCita"
+                                        required data-validation-required-message="Numero de Cita inválido."> </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Fecha</label>
+                                    <input class="form-control" type="date" value="<? echo $fecha ?>" name="fecha"
+                                        required data-validation-required-message="Fecha inválida."> </div>
+                            </div>
+                        </div>
+
                         <div class="form-group">
                             <label>Comentarios</label>
                             <textarea class="form-control" 
-                                rows="5" name="comentarios" required data-validation-required-message="Fraccionamiento inválido."
+                                rows="5" name="comentarios" required data-validation-required-message="Faltan comentarios."
                                 ><? echo $comentarios ?></textarea> </div>
-                        <div class="form-group">
-                            <label>Inmueble</label><br>
-                            <select name="idInmueble" required>
-                                <? foreach ($Inmuebles as $i) { ?>      
-                                    <option value="<? echo $i->id ?>"><? echo $i->Nombre . "  -  $" . $i->Precio . "  -  " . $i->Disponibilidad ?></option>      
-                                <? }?>
-                            </select> </div>
-                        <div class="form-group">
-                            <label>Nivel de Interés en el Inmueble</label><br>
-                            <select name="tipoInteresadoId" required>
-                                <? foreach ($TipoInteresados as $t) { ?>      
-                                    <option value="<? echo $t->id ?>"><? echo $t->Nombre ?></option>      
-                                <? }?>
-                            </select> </div>
-                        <button type="submit" class="btn btn-info">Submit</button>
+
+                        <div class="row p-t-20">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Inmueble</label><br>
+                                    <select name="idInmueble" required>
+                                        <option value="">Selecciona una opción</option>
+                                        <? foreach ($Inmuebles as $i) { ?>      
+                                            <option value="<? echo $i->id ?>"><? echo $i->Nombre . "  -  $" . $i->Precio . "  -  " . $i->Disponibilidad ?></option>      
+                                        <? }?>
+                                    </select> </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Nivel de Interés en el Inmueble</label><br>
+                                    <select name="tipoInteresadoId" required>
+                                        <option value="">Selecciona una opción</option>
+                                        <? foreach ($TipoInteresados as $t) { ?>      
+                                            <option value="<? echo $t->id ?>"><? echo $t->Nombre ?></option>      
+                                        <? }?>
+                                    </select> </div>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-info">Agregar Cita</button>
                     </form>
                 </div>
             </div>

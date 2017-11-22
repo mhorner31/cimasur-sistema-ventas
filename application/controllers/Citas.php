@@ -53,7 +53,7 @@ class Citas extends CI_Controller {
         if ($id == NULL) {
             // Settear los valores de default
             $data['IdCita'] = 0;
-            $data['fecha'] = date('Y-m-d\TH:i:s');
+            $data['fecha'] = date('Y-m-d');
             $data['noCita'] = 1;
             $data['comentarios'] = "";
 
@@ -105,11 +105,8 @@ class Citas extends CI_Controller {
 
     public function delete($id)
     {
-       $this->load->helper('url');
-       $this->load->helper('html');
-       
-       $this->db->where('id', $id);
-       $this->db->delete('Cita');
-       redirect(base_url('/citas/'));
-   }
+        $citasModel = new CitasModel;
+        $citasModel->eliminarCita($id);
+        redirect(base_url('/citas/'));
+    }
 }
