@@ -64,6 +64,7 @@ class Usuarios extends CI_Controller
             $data['Apellidos'] = "";
             $data['Email'] = "";
             $data['Estatus'] = "";
+            $data['Password'] = "";
         } else {
             
             // Settear los valores de la BD
@@ -71,11 +72,12 @@ class Usuarios extends CI_Controller
 
             $data['id'] = $id;            
             $data['Nickname'] = $usuario->nickname;
-            $data['Tipo'] = $usuario->Tipo;;
-            $data['Nombre'] = $usuario->Nombre;;
-            $data['Apellidos'] = $usuario->Apellidos;;
-            $data['Email'] = $usuario->email;;
-            $data['Estatus'] = $usuario->Estatus;;
+            $data['Tipo'] = $usuario->Tipo;
+            $data['Nombre'] = $usuario->Nombre;
+            $data['Apellidos'] = $usuario->Apellidos;
+            $data['Email'] = $usuario->email;
+            $data['Estatus'] = $usuario->Estatus;
+            $data['Password'] = $usuario->password;
         }
 
         $this->load->view('Usuarios/update', $data);

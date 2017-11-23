@@ -56,11 +56,11 @@ class Login extends CI_Controller {
             //}
             } else {
                 $data['mensajeLogin'] = "Usuario No Activo, contacte al administrador";
-                $this->load->view('login_app', $data);
+                $this->load->view('login', $data);
             }
         } else {
             $data['mensajeLogin'] = "Usuario o contraseña incorrectos";
-            $this->load->view('login_app', $data);
+            $this->load->view('login', $data);
         }
     }
 
@@ -69,6 +69,6 @@ class Login extends CI_Controller {
         $this->session->unset_userdata($sess_array);
         $this->session->sess_destroy();
         $data['mensajeLogin'] = 'Session terminada correctamente';
-        $this->load->view('login_app', $data);
+        $this->load->view('login', $data);
     }
 }

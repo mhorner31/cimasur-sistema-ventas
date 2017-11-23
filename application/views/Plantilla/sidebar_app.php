@@ -9,9 +9,9 @@
                     <ul id="sidebarnav">
                         <li class="user-profile"> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-account-circle"></i><span class="hide-menu"> <?echo $this->session->userdata('nickname');?></span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="<?php echo base_url();?>usuarios/perfil">Mi Perfil </a></li>
-                                <li><a href="<?php echo base_url();?>usuarios/password">Cambiar Contraseña</a></li>
-                                <li><a href="<?php echo base_url();?>login/cerrarSesion">Cerrar Sesión</a></li>
+                                <?$id = $this->session->userdata('id')?>
+                                <li><a href="<?php echo base_url('usuarios/update/'.$id);?>">Mi Perfil </a></li>
+                                <li><a href="<?php echo base_url('login/cerrarSesion');?>">Cerrar Sesión</a></li>
                             </ul>
                         </li>
                         <li class="nav-devider"></li>
@@ -35,7 +35,6 @@
                                 <li><a href="<?php echo base_url();?>inmuebles">Inmuebles</a></li>
                                 <li><a href="<?php echo base_url();?>citas">Citas</a></li>
                                 <li><a href="<?php echo base_url();?>publicidad">Medios de Publcidad</a></li>
-                                <li><a href="app-ticket.html">Base de Datos</a></li>
                             </ul>
                         </li>
                         <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-account-multiple"></i><span class="hide-menu">Usuarios</span></a>

@@ -79,7 +79,7 @@
                             <div class="form-group m-t-40 row">
                                 <label for="nombre" class="col-2 col-form-label">Contraseña</label>
                                 <div class="col-10">
-                                    <input type="password" name="password" class="form-control"> 
+                                    <input type="password" name="password" class="form-control" value="<?echo $Password;?>">
                                 </div>
                             </div>
                             <!--<div class="form-group m-t-40 row">

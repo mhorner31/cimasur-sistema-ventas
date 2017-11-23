@@ -20,7 +20,7 @@ class UsuariosModel extends CI_Model
     }
 
     public function getUsuarios($id = NULL){
-        $sql = "SELECT u.id, u.nickname, u.Nombre, u.Apellidos, u.email, t.Nombre as Tipo, s.Nombre as Estatus
+        $sql = "SELECT u.id, u.nickname, u.Nombre, u.Apellidos, u.email, t.Nombre as Tipo, s.Nombre as Estatus, u.password
                   FROM Usuario u
                   INNER JOIN TipoUsuario t ON u.idTipoUsuario = t.id
                   INNER JOIN StatusUsuario s ON u.StatusId = s.id";
@@ -55,7 +55,14 @@ class UsuariosModel extends CI_Model
     {
         $data = "";
 
-        if ($this->input->post('password') != ""){
+        $sql = "SELECT u.password
+                FROM Usuario u";
+        $query = $this->db->query($sql . " WHERE u.id = ?", array($id));
+        $usuario = $query->row();
+       
+        $pass = $usuario->password;
+
+        if ($this->input->post('password') != "" && ($this->input->post('password') != $pass)){
             $data = array(
                 'idTipoUsuario' => $this->input->post('tipo'),
                 'nickname' => $this->input->post('nickname'),
